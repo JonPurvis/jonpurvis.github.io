@@ -1,0 +1,355 @@
+---
+import { TAG_LABELS } from '../consts';
+
+const tags = Object.entries(TAG_LABELS).map(([slug, label]) => ({
+  slug,
+  label,
+  url: `/tag/${slug}/`,
+}));
+
+const pages = [
+  { title: 'About', url: '/about/', excerpt: 'Hey, I’m Jon — PHP developer, open source, and community.' },
+  { title: 'Uses', url: '/uses/', excerpt: 'Hardware, software, and tools I use day to day.' },
+  { title: 'Packages', url: '/packages/', excerpt: 'Open source packages I’ve built and maintain.' },
+];
+---
+
+<button
+  type="button"
+  class="search-toggle"
+  id="search-toggle"
+  aria-label="Search"
+  title="Search"
+  aria-expanded="false"
+  aria-controls="search-modal"
+>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+    <circle cx="11" cy="11" r="7"></circle>
+    <path d="M20 20l-3.5-3.5"></path>
+  </svg>
+</button>
+
+<div
+  class="search-modal"
+  id="search-modal"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-label="Search"
+>
+  <div class="search-modal-backdrop" data-search-close></div>
+  <div class="search-modal-panel">
+    <div class="gh-search-bar">
+      <button
+        type="button"
+        class="gh-search-action"
+        id="search-action"
+        aria-label="Search"
+        data-mode="search"
+      >
+        <svg class="gh-icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
+        </svg>
+        <svg class="gh-icon-clear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" hidden>
+          <path d="M6 6l12 12M18 6L6 18"></path>
+        </svg>
+      </button>
+      <input
+        type="search"
+        id="search-input"
+        class="gh-search-input"
+        placeholder="Search posts, tags and pages"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        enterkeyhint="search"
+      />
+    </div>
+    <div class="gh-search-results" id="search-results" hidden></div>
+    <p class="search-fallback" id="search-fallback" hidden>
+      Search is available after a production build. Run <code>npm run build && npm run preview</code>.
+    </p>
+  </div>
+</div>
+
+<script
+  type="application/json"
+  id="search-static-data"
+  set:html={JSON.stringify({ tags, pages })}
+/>
+
+<script is:inline>
+  (() => {
+    const toggle = document.getElementById('search-toggle');
+    const modal = document.getElementById('search-modal');
+    const input = document.getElementById('search-input');
+    const action = document.getElementById('search-action');
+    const resultsEl = document.getElementById('search-results');
+    const fallback = document.getElementById('search-fallback');
+    const staticRaw = document.getElementById('search-static-data');
+    if (!toggle || !modal || !input || !action || !resultsEl) return;
+
+    let staticData = { tags: [], pages: [] };
+    try {
+      staticData = JSON.parse(staticRaw?.textContent || '{}');
+    } catch (_) {}
+
+    let pagefind = null;
+    let loading = false;
+    let unavailable = false;
+    let debounceTimer = 0;
+    let requestId = 0;
+
+    function setActionMode(mode) {
+      const isClear = mode === 'clear';
+      action.dataset.mode = mode;
+      action.setAttribute('aria-label', isClear ? 'Clear search' : 'Search');
+      const searchIcon = action.querySelector('.gh-icon-search');
+      const clearIcon = action.querySelector('.gh-icon-clear');
+      if (searchIcon) searchIcon.hidden = isClear;
+      if (clearIcon) clearIcon.hidden = !isClear;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function plainExcerpt(html) {
+      return String(html || '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function matchesQuery(text, query) {
+      return String(text || '').toLowerCase().includes(query);
+    }
+
+    function sectionHtml(label, itemsHtml) {
+      if (!itemsHtml) return '';
+      return (
+        '<section class="gh-search-section">' +
+        '<h3 class="gh-search-heading">' +
+        escapeHtml(label) +
+        '</h3>' +
+        '<div class="gh-search-list">' +
+        itemsHtml +
+        '</div></section>'
+      );
+    }
+
+    function tagItem(tag) {
+      return (
+        '<a class="gh-search-row gh-search-row-tag" href="' +
+        escapeHtml(tag.url) +
+        '"><span class="gh-search-hash" aria-hidden="true">#</span><span class="gh-search-row-title">' +
+        escapeHtml(tag.label) +
+        '</span></a>'
+      );
+    }
+
+    function pageItem(page) {
+      return (
+        '<a class="gh-search-row" href="' +
+        escapeHtml(page.url) +
+        '"><span class="gh-search-row-title">' +
+        escapeHtml(page.title) +
+        '</span>' +
+        (page.excerpt
+          ? '<span class="gh-search-row-excerpt">' + escapeHtml(page.excerpt) + '</span>'
+          : '') +
+        '</a>'
+      );
+    }
+
+    function postItem(post) {
+      const excerpt = plainExcerpt(post.excerpt || post.meta?.description || '');
+      return (
+        '<a class="gh-search-row" href="' +
+        escapeHtml(post.url) +
+        '"><span class="gh-search-row-title">' +
+        escapeHtml(post.meta?.title || post.url) +
+        '</span>' +
+        (excerpt
+          ? '<span class="gh-search-row-excerpt">' + escapeHtml(excerpt) + '</span>'
+          : '') +
+        '</a>'
+      );
+    }
+
+    async function ensurePagefind() {
+      if (pagefind || unavailable) return pagefind;
+      if (loading) {
+        await new Promise((resolve) => {
+          const wait = setInterval(() => {
+            if (pagefind || unavailable || !loading) {
+              clearInterval(wait);
+              resolve();
+            }
+          }, 40);
+        });
+        return pagefind;
+      }
+      loading = true;
+      try {
+        pagefind = await import('/pagefind/pagefind.js');
+        await pagefind.init();
+        if (fallback) fallback.hidden = true;
+      } catch (_) {
+        unavailable = true;
+        if (fallback) fallback.hidden = false;
+      } finally {
+        loading = false;
+      }
+      return pagefind;
+    }
+
+    function renderEmpty() {
+      resultsEl.hidden = true;
+      resultsEl.innerHTML = '';
+    }
+
+    async function runSearch(rawQuery) {
+      const query = rawQuery.trim().toLowerCase();
+      setActionMode(query ? 'clear' : 'search');
+
+      if (!query) {
+        renderEmpty();
+        return;
+      }
+
+      const id = ++requestId;
+      const tagHits = (staticData.tags || [])
+        .filter((tag) => matchesQuery(tag.label, query) || matchesQuery(tag.slug, query))
+        .slice(0, 8);
+
+      const pageHits = (staticData.pages || [])
+        .filter(
+          (page) =>
+            matchesQuery(page.title, query) ||
+            matchesQuery(page.excerpt, query) ||
+            matchesQuery(page.url, query),
+        )
+        .slice(0, 8);
+
+      let postHits = [];
+      const pf = await ensurePagefind();
+      if (id !== requestId) return;
+
+      if (pf) {
+        try {
+          const search = await pf.search(query);
+          if (id !== requestId) return;
+          const top = search.results.slice(0, 24);
+          const data = await Promise.all(top.map((result) => result.data()));
+          if (id !== requestId) return;
+          postHits = data
+            .filter((item) => {
+              const type = item.meta?.type || 'post';
+              if (type === 'page') return false;
+              const url = item.url || '';
+              return !['/about/', '/uses/', '/packages/'].includes(url);
+            })
+            .slice(0, 12);
+        } catch (_) {
+          postHits = [];
+        }
+      }
+
+      if (id !== requestId) return;
+
+      const html =
+        sectionHtml('Tags', tagHits.map(tagItem).join('')) +
+        sectionHtml('Pages', pageHits.map(pageItem).join('')) +
+        sectionHtml('Posts', postHits.map(postItem).join(''));
+
+      if (!html) {
+        resultsEl.hidden = false;
+        resultsEl.innerHTML =
+          '<p class="gh-search-empty">No results for &ldquo;' + escapeHtml(rawQuery.trim()) + '&rdquo;</p>';
+        return;
+      }
+
+      resultsEl.hidden = false;
+      resultsEl.innerHTML = html;
+    }
+
+    function scheduleSearch() {
+      window.clearTimeout(debounceTimer);
+      debounceTimer = window.setTimeout(() => runSearch(input.value), 120);
+    }
+
+    function clearInput() {
+      input.value = '';
+      setActionMode('search');
+      renderEmpty();
+      input.focus();
+    }
+
+    async function open() {
+      modal.hidden = false;
+      document.body.classList.add('search-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      setActionMode(input.value.trim() ? 'clear' : 'search');
+      ensurePagefind();
+      requestAnimationFrame(() => input.focus());
+    }
+
+    function close() {
+      modal.hidden = true;
+      document.body.classList.remove('search-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+
+    toggle.addEventListener('click', () => {
+      if (modal.hidden) open();
+      else close();
+    });
+
+    modal.querySelectorAll('[data-search-close]').forEach((el) => {
+      el.addEventListener('click', close);
+    });
+
+    action.addEventListener('click', () => {
+      if (action.dataset.mode === 'clear') clearInput();
+      else input.focus();
+    });
+
+    input.addEventListener('input', scheduleSearch);
+    input.addEventListener('search', () => {
+      if (!input.value) clearInput();
+    });
+
+    resultsEl.addEventListener('click', (event) => {
+      const link = event.target.closest('a.gh-search-row');
+      if (link) close();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if ((event.key === 'k' || event.key === 'K') && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        if (modal.hidden) open();
+        else close();
+        return;
+      }
+      if (event.key === '/' && modal.hidden) {
+        const tag = (event.target && event.target.tagName) || '';
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || event.target?.isContentEditable) return;
+        event.preventDefault();
+        open();
+        return;
+      }
+      if (event.key === 'Escape' && !modal.hidden) {
+        event.preventDefault();
+        close();
+      }
+    });
+  })();
+</script>

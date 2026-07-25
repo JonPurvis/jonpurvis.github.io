@@ -1,0 +1,174 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteImage from '../components/SiteImage.astro';
+import TwitterEmbeds from '../components/TwitterEmbeds.astro';
+import { SITE_TITLE, SITE_URL, TAG_LABELS } from '../consts';
+import {
+  formatDate,
+  readingTime,
+  tagLabel,
+  primaryTag,
+  excerptFrom,
+} from '../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const pages = (await getCollection('pages')).filter((p) => p.data.slug !== 'packages');
+
+  return [
+    ...posts.map((post) => ({
+      params: { slug: post.data.slug },
+      props: { kind: 'post' as const, post, page: undefined as undefined },
+    })),
+    ...pages.map((page) => ({
+      params: { slug: page.data.slug },
+      props: { kind: 'page' as const, page, post: undefined as undefined },
+    })),
+  ];
+}
+
+interface Props {
+  kind: 'post' | 'page';
+  post?: CollectionEntry<'blog'>;
+  page?: CollectionEntry<'pages'>;
+}
+
+const { kind, post, page } = Astro.props as Props;
+const entry = (kind === 'post' ? post : page)!;
+const { Content } = await render(entry);
+
+const isPost = kind === 'post' && post;
+const tag = isPost ? primaryTag(post.data.tags) : undefined;
+const description = isPost
+  ? excerptFrom(post)
+  : (page?.data.excerpt ?? `${page?.data.title} — ${SITE_TITLE}`);
+const minutes = isPost ? readingTime(post.body ?? '') : 0;
+
+const jsonLd = isPost
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      description,
+      image: post.data.feature_image,
+      datePublished: post.data.date.toISOString(),
+      dateModified: (post.data.updated ?? post.data.date).toISOString(),
+      author: {
+        '@type': 'Person',
+        name: SITE_TITLE,
+        url: SITE_URL,
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `${SITE_URL}/${post.data.slug}/`,
+      },
+    }
+  : null;
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={description}
+  image={isPost ? post.data.feature_image : undefined}
+  canonical={`/${entry.data.slug}/`}
+  type={isPost ? 'article' : 'website'}
+  publishedTime={isPost ? post.data.date : undefined}
+  modifiedTime={isPost ? (post.data.updated ?? post.data.date) : undefined}
+>
+  {
+    jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )
+  }
+
+  <div data-pagefind-body data-pagefind-meta={isPost ? 'type:post' : 'type:page'}>
+  {
+    isPost ? (
+      <header class="post-header">
+        <div class="content-width">
+          {tag && (
+            <a class="post-tag" href={`/tag/${tag}/`}>
+              {tagLabel(tag)}
+            </a>
+          )}
+          <h1 class="post-title" data-pagefind-meta="title">{post.data.title}</h1>
+          <div class="post-meta">
+            <time datetime={post.data.date.toISOString()}>
+              {formatDate(post.data.date)}
+            </time>
+            <span> — {minutes} min read</span>
+          </div>
+        </div>
+      </header>
+    ) : (
+      <header class="page-header page-header-tight">
+        <div class="content-width">
+          <h1 data-pagefind-meta="title">{page!.data.title}</h1>
+        </div>
+      </header>
+    )
+  }
+
+  {
+    isPost && post.data.feature_image && (
+      <figure class="feature-figure" data-pagefind-ignore>
+        <div class="content-width">
+          <SiteImage
+            src={post.data.feature_image}
+            alt=""
+            width={1200}
+            height={800}
+            loading="eager"
+            widths={[640, 960, 1200]}
+            sizes="(min-width: 760px) 720px, 100vw"
+          />
+          {post.data.feature_image_credit && (
+            <figcaption class="feature-credit">
+              Photo by{' '}
+              <a
+                href={post.data.feature_image_credit.profile_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {post.data.feature_image_credit.name}
+              </a>
+              {' / '}
+              <a
+                href={post.data.feature_image_credit.unsplash_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Unsplash
+              </a>
+            </figcaption>
+          )}
+        </div>
+      </figure>
+    )
+  }
+
+  <article class="post-body content-width">
+    {
+      isPost && post.data.photo_album && (
+        <a class="callout photo-album-cta" href={`/${post.data.slug}/photos/`}>
+          <strong>See the photo album</strong>
+          View photos from this post in the gallery.
+        </a>
+      )
+    }
+    <Content />
+    {
+      isPost && post.data.tags.length > 0 && (
+        <div class="post-tags">
+          {post.data.tags.map((t) => (
+            <a href={`/tag/${t}/`}>{TAG_LABELS[t] ?? t}</a>
+          ))}
+        </div>
+      )
+    }
+  </article>
+  </div>
+  <TwitterEmbeds />
+</BaseLayout>

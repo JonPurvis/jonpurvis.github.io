@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const albums = await getCollection('photos');
+  return albums.map((album) => ({
+    params: { album: album.data.slug },
+    props: { slug: album.data.related_post || album.data.slug },
+  }));
+}
+
+const { slug } = Astro.props;
+return Astro.redirect(`/${slug}/photos/`, 301);
+---

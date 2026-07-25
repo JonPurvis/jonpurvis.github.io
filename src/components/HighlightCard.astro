@@ -1,0 +1,68 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import SiteImage from './SiteImage.astro';
+import { formatDate, tagLabel, primaryTag, excerptFrom } from '../lib/posts';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  size?: 'featured' | 'medium';
+  eager?: boolean;
+  showExcerpt?: boolean;
+  showTag?: boolean;
+  showImage?: boolean;
+  showDate?: boolean;
+}
+
+const {
+  post,
+  size = 'medium',
+  eager = false,
+  showExcerpt = true,
+  showTag = true,
+  showImage = true,
+  showDate = true,
+} = Astro.props;
+const tag = primaryTag(post.data.tags);
+const href = `/${post.data.slug}/`;
+const excerptLen = size === 'featured' ? 112 : 65;
+const imageWidth = size === 'featured' ? 1200 : 800;
+const imageHeight = size === 'featured' ? 800 : 450;
+---
+
+<a class:list={['hl-card', `is-${size}`]} href={href}>
+  {
+    showImage && post.data.feature_image && (
+      <div class="hl-card-image">
+        <SiteImage
+          src={post.data.feature_image}
+          alt=""
+          width={imageWidth}
+          height={imageHeight}
+          loading={eager ? 'eager' : 'lazy'}
+          sizes={
+            size === 'featured'
+              ? '(min-width: 768px) 50vw, 100vw'
+              : '(min-width: 768px) 25vw, 100vw'
+          }
+          widths={size === 'featured' ? [600, 900, 1200] : [400, 600, 800]}
+        />
+      </div>
+    )
+  }
+  <div class="hl-card-body">
+    {showTag && tag && <div class="card-tag">{tagLabel(tag)}</div>}
+    <h3 class="hl-card-title">{post.data.title}</h3>
+    {
+      showExcerpt && (
+        <p class="card-excerpt">{excerptFrom(post, excerptLen)}</p>
+      )
+    }
+    {
+      showDate && (
+        <div class="card-meta">
+          <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+        </div>
+      )
+    }
+  </div>
+</a>

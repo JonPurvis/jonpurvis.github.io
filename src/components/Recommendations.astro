@@ -1,0 +1,42 @@
+---
+import { RECOMMENDATIONS } from '../consts';
+import SiteImage from './SiteImage.astro';
+
+interface Props {
+  /** Use eager when the sidebar is above the fold (e.g. tag/archive pages). */
+  eager?: boolean;
+}
+
+const { eager = false } = Astro.props;
+const loading = eager ? 'eager' : 'lazy';
+
+function faviconUrl(domain: string) {
+  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
+}
+---
+
+<section class="recommendations">
+  <h4 class="sidebar-title">Recommendations</h4>
+  <ul class="recommendation-list">
+    {
+      RECOMMENDATIONS.map((rec) => (
+        <li>
+          <a class="recommendation" href={rec.href} target="_blank" rel="noopener noreferrer">
+            <SiteImage
+              class="recommendation-favicon"
+              src={faviconUrl(rec.url)}
+              alt=""
+              width={32}
+              height={32}
+              loading={loading}
+            />
+            <span class="recommendation-copy">
+              <span class="recommendation-title">{rec.title}</span>
+              <span class="recommendation-url">{rec.url}</span>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

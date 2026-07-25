@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostGrid from '../../components/PostGrid.astro';
+import HomeSidebar from '../../components/HomeSidebar.astro';
+import SiteImage from '../../components/SiteImage.astro';
+import { SITE_TITLE } from '../../consts';
+import { sortPosts } from '../../lib/posts';
+import { getTagMeta } from '../../data/tags';
+
+export async function getStaticPaths() {
+  const posts = sortPosts(await getCollection('blog'));
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts.filter((p) => p.data.tags.includes(tag)),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+const meta = getTagMeta(tag);
+const description = meta.description ?? `Posts tagged ${meta.name} — ${SITE_TITLE}`;
+---
+
+<BaseLayout
+  title={meta.name}
+  description={description}
+  image={meta.feature_image}
+  canonical={`/tag/${tag}/`}
+>
+  <section class="latest-section archive-section">
+    <div class="inner">
+      <header class="tag-archive-header">
+        <div class="tag-archive-copy">
+          <h1 class="tag-archive-title">{meta.name}</h1>
+          {
+            meta.description && (
+              <p class="tag-archive-excerpt">{meta.description}</p>
+            )
+          }
+        </div>
+        {
+          meta.feature_image && (
+            <figure class="tag-archive-image">
+              <SiteImage
+                src={meta.feature_image}
+                alt=""
+                width={1200}
+                height={900}
+                loading="eager"
+                widths={[640, 960, 1200]}
+                sizes="(min-width: 800px) 50vw, 100vw"
+              />
+            </figure>
+          )
+        }
+      </header>
+
+      <div class="latest-layout">
+        <div class="latest-main">
+          <PostGrid posts={posts} eagerCount={3} />
+        </div>
+        <HomeSidebar eager />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

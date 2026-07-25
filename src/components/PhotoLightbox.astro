@@ -1,0 +1,134 @@
+---
+import SiteImage from './SiteImage.astro';
+
+interface ImageItem {
+  src: string;
+  alt?: string;
+  caption?: string;
+}
+
+interface Props {
+  images: ImageItem[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="photo-grid" data-photo-lightbox>
+  {
+    images.map((image, index) => (
+      <figure>
+        <button
+          type="button"
+          class="photo-grid-trigger"
+          data-lightbox-open={index}
+          aria-label={`Open photo ${index + 1} of ${images.length}`}
+        >
+          <SiteImage
+            src={image.src}
+            alt={image.alt ?? ''}
+            width={800}
+            height={600}
+            loading={index < 4 ? 'eager' : 'lazy'}
+            widths={[400, 600, 800]}
+            sizes="(min-width: 760px) 340px, 100vw"
+          />
+        </button>
+        {image.caption && <figcaption>{image.caption}</figcaption>}
+      </figure>
+    ))
+  }
+</div>
+
+<dialog class="photo-lightbox" data-lightbox-dialog aria-label="Photo viewer">
+  <div class="photo-lightbox-inner">
+    <button type="button" class="photo-lightbox-close" data-lightbox-close aria-label="Close">
+      ×
+    </button>
+    <button type="button" class="photo-lightbox-nav is-prev" data-lightbox-prev aria-label="Previous photo">
+      ‹
+    </button>
+    <figure class="photo-lightbox-figure">
+      <img data-lightbox-image alt="" />
+      <figcaption data-lightbox-caption hidden></figcaption>
+    </figure>
+    <button type="button" class="photo-lightbox-nav is-next" data-lightbox-next aria-label="Next photo">
+      ›
+    </button>
+    <p class="photo-lightbox-counter" data-lightbox-counter></p>
+  </div>
+</dialog>
+
+<script
+  type="application/json"
+  data-lightbox-images
+  set:html={JSON.stringify(images)}
+/>
+
+<script>
+  (() => {
+    const root = document.querySelector('[data-photo-lightbox]');
+    const dialog = document.querySelector('[data-lightbox-dialog]');
+    const dataEl = document.querySelector('[data-lightbox-images]');
+    if (!root || !dialog || !dataEl) return;
+
+    /** @type {{ src: string, alt?: string, caption?: string }[]} */
+    const images = JSON.parse(dataEl.textContent || '[]');
+    if (!images.length) return;
+
+    const imgEl = dialog.querySelector('[data-lightbox-image]');
+    const captionEl = dialog.querySelector('[data-lightbox-caption]');
+    const counterEl = dialog.querySelector('[data-lightbox-counter]');
+    const prevBtn = dialog.querySelector('[data-lightbox-prev]');
+    const nextBtn = dialog.querySelector('[data-lightbox-next]');
+    if (!imgEl || !captionEl || !counterEl || !prevBtn || !nextBtn) return;
+
+    let index = 0;
+
+    function show(i) {
+      index = (i + images.length) % images.length;
+      const item = images[index];
+      imgEl.src = item.src;
+      imgEl.alt = item.alt || '';
+      if (item.caption) {
+        captionEl.hidden = false;
+        captionEl.textContent = item.caption;
+      } else {
+        captionEl.hidden = true;
+        captionEl.textContent = '';
+      }
+      counterEl.textContent = `${index + 1} / ${images.length}`;
+      prevBtn.hidden = images.length < 2;
+      nextBtn.hidden = images.length < 2;
+    }
+
+    function open(i) {
+      show(i);
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else dialog.setAttribute('open', '');
+    }
+
+    function close() {
+      if (typeof dialog.close === 'function') dialog.close();
+      else dialog.removeAttribute('open');
+    }
+
+    root.querySelectorAll('[data-lightbox-open]').forEach((btn) => {
+      btn.addEventListener('click', () => open(Number(btn.getAttribute('data-lightbox-open'))));
+    });
+
+    dialog.querySelector('[data-lightbox-close]')?.addEventListener('click', close);
+    prevBtn.addEventListener('click', () => show(index - 1));
+    nextBtn.addEventListener('click', () => show(index + 1));
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) close();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (!dialog.open) return;
+      if (event.key === 'ArrowLeft') show(index - 1);
+      if (event.key === 'ArrowRight') show(index + 1);
+    });
+  })();
+</script>

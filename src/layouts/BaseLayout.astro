@@ -1,0 +1,212 @@
+---
+import '../styles/global.css';
+import SiteSearch from '../components/SiteSearch.astro';
+import SiteImage from '../components/SiteImage.astro';
+import {
+  SITE_META_DESCRIPTION,
+  SITE_TITLE,
+  SITE_URL,
+  TWITTER_HANDLE,
+  PRIMARY_NAV,
+  FOOTER_TAGS,
+  SOCIAL_LINKS,
+} from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description = SITE_META_DESCRIPTION,
+  image = '/images/og-default.svg',
+  canonical,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  noIndex = false,
+} = Astro.props;
+
+const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, SITE_URL);
+const imageURL = image.startsWith('http')
+  ? image
+  : new URL(image, SITE_URL).href;
+const pathname = Astro.url.pathname;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noIndex && <meta name="robots" content="noindex" />}
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:title" content={title ?? SITE_TITLE} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={imageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={TWITTER_HANDLE} />
+    <meta name="twitter:title" content={title ?? SITE_TITLE} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
+    {publishedTime && (
+      <meta property="article:published_time" content={publishedTime.toISOString()} />
+    )}
+    {modifiedTime && (
+      <meta property="article:modified_time" content={modifiedTime.toISOString()} />
+    )}
+    <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
+    <script is:inline>
+      (() => {
+        const key = 'theme';
+        const stored = localStorage.getItem(key);
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="inner nav-top">
+          <SiteSearch />
+          <button
+            type="button"
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode"
+          >
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M21 14.3A8.5 8.5 0 0 1 9.7 3 7 7 0 1 0 21 14.3z"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+            </svg>
+          </button>
+          <a class="nav-brand" href="/" aria-label={SITE_TITLE}>
+            <SiteImage
+              src="/images/logo.svg"
+              alt={SITE_TITLE}
+              width={40}
+              height={40}
+              loading="eager"
+            />
+          </a>
+        </div>
+        <hr class="nav-rule" />
+        <div class="inner nav-bottom">
+          <nav aria-label="Primary">
+            <ul class="nav-links">
+              {
+                PRIMARY_NAV.map((item) => (
+                  <li>
+                    <a
+                      href={item.href}
+                      {...('external' in item && item.external
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                      aria-current={
+                        !('external' in item && item.external) &&
+                        pathname.startsWith(item.href)
+                          ? 'page'
+                          : undefined
+                      }
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main class="site-main">
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <div class="inner footer-stack">
+          <div class="footer-social">
+            {
+              SOCIAL_LINKS.map((social) => (
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  class="footer-social-link"
+                >
+                  {social.icon === 'x' ? (
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M22.2 0H1.8C.8 0 0 .8 0 1.8v20.4C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.8C24 .8 23.2 0 22.2 0zM7.2 20.4H3.6V9.6h3.6v10.8zM5.4 7.9c-1.2 0-2.1-.9-2.1-2.1S4.2 3.7 5.4 3.7s2.1.9 2.1 2.1-.9 2.1-2.1 2.1zm15 12.5h-3.6v-5.4c0-1.4-.5-2.3-1.8-2.3-1 0-1.5.6-1.8 1.3-.1.2-.1.5-.1.8v5.6H9.5s.05-9.1 0-10h3.6v1.4c.5-.7 1.3-1.8 3.3-1.8 2.4 0 4.2 1.6 4.2 4.9v5.5z" />
+                    </svg>
+                  )}
+                </a>
+              ))
+            }
+          </div>
+
+          <div class="footer-bar">
+            <a class="footer-logo" href="/" aria-label={SITE_TITLE}>
+              <SiteImage
+                src="/images/logo.svg"
+                alt={SITE_TITLE}
+                width={36}
+                height={36}
+                loading="lazy"
+              />
+            </a>
+            <nav class="footer-tags" aria-label="Featured tags">
+              <ul>
+                {
+                  FOOTER_TAGS.map((tag) => (
+                    <li>
+                      <a href={`/tag/${tag.slug}/`}>{tag.label}</a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+            <p class="footer-copy">&copy; {year} {SITE_TITLE}</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script is:inline>
+      (() => {
+        const toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', () => {
+          const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem('theme', next);
+          document.dispatchEvent(new CustomEvent('themechange', { detail: next }));
+        });
+      })();
+    </script>
+  </body>
+</html>

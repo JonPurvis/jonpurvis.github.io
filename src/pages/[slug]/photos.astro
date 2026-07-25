@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PhotoLightbox from '../../components/PhotoLightbox.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const albums = await getCollection('photos');
+  const albumBySlug = Object.fromEntries(albums.map((a) => [a.data.slug, a]));
+
+  return posts
+    .filter((post) => post.data.photo_album && albumBySlug[post.data.photo_album])
+    .map((post) => ({
+      params: { slug: post.data.slug },
+      props: {
+        post,
+        album: albumBySlug[post.data.photo_album!],
+      },
+    }));
+}
+
+const { post, album } = Astro.props;
+const pageTitle = `${album.data.title} Photos`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={album.data.description ?? `Photos — ${album.data.title}`}
+  image={album.data.cover}
+  canonical={`/${post.data.slug}/photos/`}
+>
+  <header class="page-header page-header-tight">
+    <div class="content-width">
+      <h1>{pageTitle}</h1>
+    </div>
+  </header>
+
+  <div class="content-width" style="padding-bottom: 3rem;">
+    <a class="callout photo-album-cta" href={`/${post.data.slug}/`}>
+      <strong>Read the post</strong>
+      See the full write-up for {album.data.title}.
+    </a>
+
+    <PhotoLightbox images={album.data.images} />
+  </div>
+</BaseLayout>

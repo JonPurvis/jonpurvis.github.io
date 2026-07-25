@@ -1,0 +1,84 @@
+---
+/** Loads Twitter widgets.js when .twitter-tweet embeds are present. */
+---
+
+<script is:inline>
+  (() => {
+    const STATUS_RE = /(?:twitter\.com|x\.com)\/[^/\s"'<>]+\/status\/\d+/i;
+
+    function currentTheme() {
+      return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    }
+
+    function findTweetBlockquotes() {
+      return [...document.querySelectorAll('blockquote')].filter((el) => {
+        if (el.classList.contains('twitter-tweet')) return true;
+        return [...el.querySelectorAll('a[href]')].some((a) => STATUS_RE.test(a.href));
+      });
+    }
+
+    function prepareEmbeds() {
+      const theme = currentTheme();
+      for (const el of findTweetBlockquotes()) {
+        el.classList.add('twitter-tweet');
+        el.setAttribute('data-theme', theme);
+        el.removeAttribute('data-conversation');
+      }
+      return document.querySelectorAll('blockquote.twitter-tweet').length > 0;
+    }
+
+    function loadWidgetsScript() {
+      if (window.twttr?.widgets) return Promise.resolve(window.twttr);
+      if (window.__twttrPromise) return window.__twttrPromise;
+
+      window.__twttrPromise = new Promise((resolve) => {
+        const existing = document.querySelector('script[data-twitter-widgets]');
+        if (existing) {
+          existing.addEventListener('load', () => resolve(window.twttr));
+          return;
+        }
+        const script = document.createElement('script');
+        script.src = 'https://platform.twitter.com/widgets.js';
+        script.async = true;
+        script.charset = 'utf-8';
+        script.dataset.twitterWidgets = 'true';
+        script.addEventListener('load', () => resolve(window.twttr));
+        document.body.appendChild(script);
+      });
+
+      return window.__twttrPromise;
+    }
+
+    function resetRenderedEmbeds() {
+      document.querySelectorAll('iframe.twitter-tweet-rendered').forEach((iframe) => {
+        iframe.remove();
+      });
+      document.querySelectorAll('blockquote.twitter-tweet-rendered').forEach((el) => {
+        el.classList.remove('twitter-tweet-rendered');
+        el.style.removeProperty('display');
+      });
+    }
+
+    async function enhanceTwitterEmbeds() {
+      if (!prepareEmbeds()) return;
+      const twttr = await loadWidgetsScript();
+      twttr?.widgets?.load();
+    }
+
+    async function refreshTwitterTheme() {
+      if (!document.querySelector('blockquote.twitter-tweet, iframe.twitter-tweet-rendered')) {
+        return;
+      }
+      resetRenderedEmbeds();
+      await enhanceTwitterEmbeds();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', enhanceTwitterEmbeds, { once: true });
+    } else {
+      enhanceTwitterEmbeds();
+    }
+
+    document.addEventListener('themechange', refreshTwitterTheme);
+  })();
+</script>

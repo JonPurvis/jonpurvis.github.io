@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import HighlightCard from './HighlightCard.astro';
+import CompactPost from './CompactPost.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+const left = posts[0];
+const middle = posts.slice(1, 4);
+const right = posts.slice(4, 10);
+---
+
+<section class="home-hero">
+  <div class="inner highlight-hero">
+    <div class="highlight-left">
+      {
+        left && (
+          <HighlightCard post={left} size="featured" eager showExcerpt showTag showDate />
+        )
+      }
+    </div>
+    <div class="highlight-middle">
+      {
+        middle.map((post, i) => (
+          <HighlightCard
+            post={post}
+            size="medium"
+            showExcerpt={false}
+            showTag={false}
+            showDate={true}
+            showImage={i !== 2}
+            eager={i < 2}
+          />
+        ))
+      }
+    </div>
+    <div class="highlight-right">
+      {right.map((post) => <CompactPost post={post} eager />)}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HighlightHero from '../components/HighlightHero.astro';
+import PostCard from '../components/PostCard.astro';
+import HomeSidebar from '../components/HomeSidebar.astro';
+import {
+  SITE_DESCRIPTION,
+  HERO_COUNT,
+  HOMEPAGE_POST_COUNT,
+} from '../consts';
+import { sortPosts } from '../lib/posts';
+
+const allPosts = sortPosts(await getCollection('blog'));
+const heroPosts = allPosts.slice(0, HERO_COUNT);
+const latestPosts = allPosts.slice(HERO_COUNT, HOMEPAGE_POST_COUNT);
+const hasMore = allPosts.length > HOMEPAGE_POST_COUNT;
+---
+
+<BaseLayout title={undefined} description={SITE_DESCRIPTION}>
+  <HighlightHero posts={heroPosts} />
+
+  <section class="latest-section">
+    <div class="inner">
+      <h2 class="section-title">Latest</h2>
+      <div class="latest-layout">
+        <div class="latest-main">
+          <div class="latest-grid">
+            {latestPosts.map((post, i) => <PostCard post={post} eager={i < 3} />)}
+          </div>
+          {
+            hasMore && (
+              <div class="see-all">
+                <a class="see-all-link" href="/archive/">
+                  See all →
+                </a>
+              </div>
+            )
+          }
+        </div>
+        <HomeSidebar />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

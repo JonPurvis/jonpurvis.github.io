@@ -1,0 +1,128 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostCard from './PostCard.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  initialCount?: number;
+  infinite?: boolean;
+  eagerCount?: number;
+}
+
+const { posts, initialCount, infinite = false, eagerCount = 0 } = Astro.props;
+const visible = infinite && initialCount ? posts.slice(0, initialCount) : posts;
+const remaining = infinite && initialCount ? posts.slice(initialCount) : [];
+---
+
+<div
+  class="latest-grid"
+  data-post-grid
+  data-infinite={infinite ? 'true' : undefined}
+  data-batch-size={initialCount ?? undefined}
+>
+  {visible.map((post, i) => <PostCard post={post} eager={i < eagerCount} />)}
+</div>
+
+{
+  infinite && remaining.length > 0 && (
+    <>
+      <div class="infinite-sentinel" data-infinite-sentinel aria-hidden="true"></div>
+      <script
+        type="application/json"
+        data-remaining-posts
+        set:html={JSON.stringify(
+          remaining.map((post) => ({
+            slug: post.data.slug,
+            title: post.data.title,
+            date: post.data.date.toISOString(),
+            feature_image: post.data.feature_image ?? '',
+            excerpt: post.data.excerpt ?? '',
+          })),
+        )}
+      />
+      <script is:inline>
+        (() => {
+          function formatDate(iso) {
+            return new Date(iso).toLocaleDateString('en-GB', {
+              day: '2-digit',
+              month: 'short',
+              year: 'numeric',
+              timeZone: 'Europe/Dublin',
+            });
+          }
+
+          function excerptText(text, max = 65) {
+            const plain = (text || '').replace(/\s+/g, ' ').trim();
+            if (plain.length <= max) return plain;
+            return plain.slice(0, max).replace(/\s+\S*$/, '') + '…';
+          }
+
+          function cardHtml(post) {
+            const img = post.feature_image
+              ? '<div class="card-image"><img src="' +
+                post.feature_image +
+                '" alt="" width="800" height="450" loading="lazy" decoding="async" data-image-component="true" /></div>'
+              : '';
+            return (
+              '<a class="card" href="/' +
+              post.slug +
+              '/">' +
+              img +
+              '<div class="card-body"><h3 class="card-title"></h3><p class="card-excerpt"></p><div class="card-meta"><time datetime="' +
+              post.date +
+              '">' +
+              formatDate(post.date) +
+              '</time></div></div></a>'
+            );
+          }
+
+          const grid = document.querySelector('[data-post-grid][data-infinite="true"]');
+          const sentinel = document.querySelector('[data-infinite-sentinel]');
+          const raw = document.querySelector('[data-remaining-posts]');
+          if (!grid || !sentinel || !raw) return;
+
+          let queue = [];
+          try {
+            queue = JSON.parse(raw.textContent || '[]');
+          } catch (e) {
+            queue = [];
+          }
+
+          const batchSize = Number(grid.getAttribute('data-batch-size') || 12);
+
+          function loadMore() {
+            if (!queue.length) {
+              observer.disconnect();
+              sentinel.remove();
+              return;
+            }
+            const batch = queue.splice(0, batchSize);
+            const frag = document.createDocumentFragment();
+            for (const post of batch) {
+              const wrap = document.createElement('div');
+              wrap.innerHTML = cardHtml(post);
+              const card = wrap.firstElementChild;
+              if (!card) continue;
+              card.querySelector('.card-title').textContent = post.title;
+              card.querySelector('.card-excerpt').textContent = excerptText(post.excerpt);
+              frag.appendChild(card);
+            }
+            grid.appendChild(frag);
+            if (!queue.length) {
+              observer.disconnect();
+              sentinel.remove();
+            }
+          }
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              if (entries.some((e) => e.isIntersecting)) loadMore();
+            },
+            { rootMargin: '400px 0px' },
+          );
+          observer.observe(sentinel);
+        })();
+      </script>
+    </>
+  )
+}

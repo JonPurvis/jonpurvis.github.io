@@ -1,0 +1,73 @@
+---
+import SiteImage from './SiteImage.astro';
+
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  publisher?: string;
+  author?: string;
+  icon?: string;
+  image: string;
+  caption?: string;
+  eager?: boolean;
+  /** Icons sit lower in the card; use a stricter above-the-fold cutoff than `eager`. */
+  eagerIcon?: boolean;
+}
+
+const {
+  href,
+  title,
+  description,
+  publisher = 'GitHub',
+  author,
+  icon = 'https://github.githubassets.com/favicons/favicon.svg',
+  image,
+  caption,
+  eager = false,
+  eagerIcon = false,
+} = Astro.props;
+
+const loading = eager ? 'eager' : 'lazy';
+const iconLoading = eagerIcon ? 'eager' : 'lazy';
+---
+
+<figure class="bookmark-card">
+  <a class="bookmark-card-link" href={href} target="_blank" rel="noopener noreferrer">
+    <div class="bookmark-card-content">
+      <div class="bookmark-card-title">{title}</div>
+      <div class="bookmark-card-description">{description}</div>
+      <div class="bookmark-card-meta">
+        <SiteImage
+          class="bookmark-card-icon"
+          src={icon}
+          alt=""
+          width={18}
+          height={18}
+          loading={iconLoading}
+        />
+        <span class="bookmark-card-publisher">{publisher}</span>
+        {
+          author && (
+            <>
+              <span aria-hidden="true">•</span>
+              <span class="bookmark-card-author">{author}</span>
+            </>
+          )
+        }
+      </div>
+    </div>
+    <div class="bookmark-card-thumbnail">
+      <SiteImage
+        src={image}
+        alt=""
+        width={480}
+        height={280}
+        loading={loading}
+        widths={[240, 360, 480]}
+        sizes="(max-width: 560px) 100vw, 240px"
+      />
+    </div>
+  </a>
+  {caption && <figcaption class="bookmark-card-caption">{caption}</figcaption>}
+</figure>

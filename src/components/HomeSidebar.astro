@@ -1,0 +1,29 @@
+---
+import SiteImage from './SiteImage.astro';
+import Recommendations from './Recommendations.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+interface Props {
+  eager?: boolean;
+}
+
+const { eager = false } = Astro.props;
+---
+
+<aside class="home-sidebar">
+  <div class="sidebar-sticky">
+    <section class="about-block">
+      <SiteImage
+        class="about-icon"
+        src="/images/logo.svg"
+        alt=""
+        width={60}
+        height={60}
+        loading={eager ? 'eager' : 'lazy'}
+      />
+      <h3 class="about-title">{SITE_TITLE}</h3>
+      <p class="about-description">{SITE_DESCRIPTION}</p>
+    </section>
+    <Recommendations eager={eager} />
+  </div>
+</aside>

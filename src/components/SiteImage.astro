@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt?: string;
+  width: number;
+  height: number;
+  class?: string;
+  loading?: 'lazy' | 'eager' | null;
+  decoding?: 'async' | 'auto' | 'sync';
+  widths?: number[];
+  sizes?: string;
+}
+
+const {
+  src,
+  alt = '',
+  width,
+  height,
+  class: className,
+  loading = 'lazy',
+  decoding = 'async',
+  widths,
+  sizes,
+} = Astro.props;
+
+const isDataUri = src.startsWith('data:');
+const isSvg = /\.svg(?:\?|$)/i.test(src);
+const isUnsplash = src.startsWith('https://images.unsplash.com/');
+/** Astro Image optimizes Unsplash remotes; public/ and other remotes stay as plain img. */
+const canOptimize = !isDataUri && !isSvg && isUnsplash;
+---
+
+{
+  canOptimize ? (
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      class={className}
+      loading={loading ?? undefined}
+      decoding={decoding}
+      widths={widths}
+      sizes={sizes}
+    />
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      class={className}
+      loading={loading ?? undefined}
+      decoding={decoding}
+      data-image-component="true"
+    />
+  )
+}

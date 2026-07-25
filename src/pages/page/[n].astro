@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import { HOMEPAGE_POST_COUNT, POSTS_PER_PAGE } from '../../consts';
+import { sortPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const allPosts = sortPosts(await getCollection('blog'));
+  const archivePosts = allPosts.slice(HOMEPAGE_POST_COUNT);
+  const totalPages = 1 + Math.ceil(archivePosts.length / POSTS_PER_PAGE);
+
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => ({
+    params: { n: String(i + 2) },
+  }));
+}
+
+return Astro.redirect('/archive/', 301);
+---
