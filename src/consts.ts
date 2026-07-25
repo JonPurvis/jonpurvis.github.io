@@ -5,6 +5,10 @@ export const SITE_META_DESCRIPTION =
   'Write of Code, Eater of Food, Player of Games, Listener of Music and Drinker of Rum.';
 export const SITE_URL = 'https://www.jonathanpurvis.co.uk';
 export const TWITTER_HANDLE = '@JonPurvis_';
+export const SITE_LOGO = '/images/logo.svg';
+/** Default Open Graph image dimensions (feature images are shown ~3:2). */
+export const OG_IMAGE_WIDTH = 1200;
+export const OG_IMAGE_HEIGHT = 800;
 
 export const PRIMARY_NAV = [
   { label: 'About', href: '/about/' },

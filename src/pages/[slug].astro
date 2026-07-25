@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteImage from '../components/SiteImage.astro';
 import TwitterEmbeds from '../components/TwitterEmbeds.astro';
-import { SITE_TITLE, SITE_URL, TAG_LABELS } from '../consts';
+import { SITE_TITLE, SITE_URL, SITE_LOGO, TAG_LABELS, SOCIAL_LINKS, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../consts';
 import {
   formatDate,
   readingTime,
@@ -42,28 +42,56 @@ const { Content } = await render(entry);
 const isPost = kind === 'post' && post;
 const tag = isPost ? primaryTag(post.data.tags) : undefined;
 const description = isPost
-  ? excerptFrom(post)
+  ? excerptFrom(post, 220)
   : (page?.data.excerpt ?? `${page?.data.title} — ${SITE_TITLE}`);
 const minutes = isPost ? readingTime(post.body ?? '') : 0;
+const absoluteUrl = (path?: string) => {
+  if (!path) return undefined;
+  return path.startsWith('http') ? path : new URL(path, SITE_URL).href;
+};
+const featureImage = isPost ? post.data.feature_image : undefined;
+const featureImageUrl = absoluteUrl(featureImage);
+const tagLabels = isPost ? post.data.tags.map((t) => TAG_LABELS[t] ?? tagLabel(t)) : [];
+const pageUrl = `${SITE_URL}/${entry.data.slug}/`;
 
 const jsonLd = isPost
   ? {
       '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: post.data.title,
-      description,
-      image: post.data.feature_image,
-      datePublished: post.data.date.toISOString(),
-      dateModified: (post.data.updated ?? post.data.date).toISOString(),
+      '@type': 'Article',
+      publisher: {
+        '@type': 'Organization',
+        name: SITE_TITLE,
+        url: `${SITE_URL}/`,
+        logo: {
+          '@type': 'ImageObject',
+          url: absoluteUrl(SITE_LOGO),
+          width: 60,
+          height: 60,
+        },
+      },
       author: {
         '@type': 'Person',
         name: SITE_TITLE,
-        url: SITE_URL,
+        url: `${SITE_URL}/about/`,
+        sameAs: SOCIAL_LINKS.map((link) => link.href),
       },
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': `${SITE_URL}/${post.data.slug}/`,
-      },
+      headline: post.data.title,
+      url: pageUrl,
+      datePublished: post.data.date.toISOString(),
+      dateModified: (post.data.updated ?? post.data.date).toISOString(),
+      ...(featureImageUrl
+        ? {
+            image: {
+              '@type': 'ImageObject',
+              url: featureImageUrl,
+              width: OG_IMAGE_WIDTH,
+              height: OG_IMAGE_HEIGHT,
+            },
+          }
+        : {}),
+      ...(tagLabels.length ? { keywords: tagLabels.join(', ') } : {}),
+      description,
+      mainEntityOfPage: pageUrl,
     }
   : null;
 ---
@@ -71,17 +99,14 @@ const jsonLd = isPost
 <BaseLayout
   title={entry.data.title}
   description={description}
-  image={isPost ? post.data.feature_image : undefined}
+  image={featureImage}
   canonical={`/${entry.data.slug}/`}
   type={isPost ? 'article' : 'website'}
   publishedTime={isPost ? post.data.date : undefined}
   modifiedTime={isPost ? (post.data.updated ?? post.data.date) : undefined}
+  tags={tagLabels}
+  jsonLd={jsonLd}
 >
-  {
-    jsonLd && (
-      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-    )
-  }
 
   <div data-pagefind-body data-pagefind-meta={isPost ? 'type:post' : 'type:page'}>
   {

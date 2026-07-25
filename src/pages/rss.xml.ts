@@ -9,7 +9,7 @@ export const GET: APIRoute = async () => {
   const items = posts
     .map((post) => {
       const link = `${SITE_URL}/${post.data.slug}/`;
-      const description = excerptFrom(post).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      const description = excerptFrom(post, 220).replace(/&/g, '&amp;').replace(/</g, '&lt;');
       return `
     <item>
       <title><![CDATA[${post.data.title}]]></title>
