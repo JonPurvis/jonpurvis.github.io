@@ -114,8 +114,11 @@ const year = new Date().getFullYear();
       )
     }
 
-    <link rel="icon" href={SITE_LOGO} type="image/svg+xml" />
-    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="256x256" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss/" />
     {
       jsonLd && (
         <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
