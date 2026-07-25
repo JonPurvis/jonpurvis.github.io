@@ -14,9 +14,9 @@ feature_image_credit:
   profile_url: https://unsplash.com/@hendrik_martin?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  I'm happy to announce that Profanify now has support for the Dutch language, thanks to Stanley
-  Kinkelaar! Dutch means that Profanify now supports 5 languages, with plenty more to go! Support is
-  available for: * English…
+  I'm happy to announce that now has support for the Dutch language, thanks to ! Dutch means
+  that Profanify now supports 5 languages, with plenty more to go! Support is available for:
+  * English * Italian * Arabic *…
 ---
 
 I'm happy to announce that [Profanify](https://github.com/JonPurvis/profanify) now has support for the Dutch language, thanks to [Stanley Kinkelaar](https://github.com/stanleykinkelaar)! Dutch means that Profanify now supports 5 languages, with plenty more to go! Support is available for:
@@ -56,14 +56,17 @@ If you're a native speaker of any of those languages, please consider submitting
 
 If you're yet to check out Profanify, you can read all about it below or check out the [Repository on GitHub](https://github.com/JonPurvis/profanify).
 
-[
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="/announcing-profanify/">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">Announcing Profanify</div>
+<div class="bookmark-card-description">This weekend, I decided to work on a new plugin for . If you don't already know, PestPHP is one of my absolute favourite tools. I use it on a pretty much daily basis and I love</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="/favicon.png" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">Jon Purvis</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://images.unsplash.com/photo-1676935753519-a8dcb3ed5fe3?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fG1hY2hpbmFyeXxlbnwwfHx8fDE3NzQ3OTcxMDV8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=2000" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
-Announcing Profanify
-
-This weekend, I decided to work on a new plugin for PestPHP. If you don’t already know, PestPHP is one of my absolute favourite tools. I use it on a pretty much daily basis and I love working with it, whether it be adding new Expectations to the PestPHP framework,
-
-![](/images/posts/dutch-support-added-to-profanify-and-how-you-can-contribute/inline-01.ico)Jon PurvisJon Purvis
-
-![](https://jonathanpurvis.co.uk/content/images/2024/08/Profanify--1--1.png)
-
-](/announcing-profanify/)

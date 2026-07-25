@@ -12,24 +12,26 @@ feature_image_credit:
   profile_url: https://unsplash.com/@oliabudaevaeverything?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  Recently, the Laravel team launched the beta of the Laravel MCP package. The idea of the package
-  is to aid the development of building MCP servers for your applications. This is the 2nd first
-  party AI focused package…
+  Recently, the Laravel team launched the beta of the Laravel MCP package. The idea of the
+  package is to aid the development of building MCP servers for your applications. This is
+  the 2nd first party AI focused package…
 ---
 
 Recently, the Laravel team launched the beta of the Laravel MCP package. The idea of the package is to aid the development of building MCP servers for your applications. This is the 2nd first party AI focused package that the team has released, the first of which was Laravel Boost
 
-[
-
-Laravel Boost
-
-This week, I took Laravel Boost for a spin. Boost is a new package by Laravel that, in their own words: “Accelerates AI-assisted development by providing the essential context and structure that AI needs to generate high-quality, Laravel-specific code using any agent.” Essentially, the package exposes a
-
-![](/images/posts/laravel-mcp-beta/inline-01.ico)Jon PurvisJon Purvis
-
-![](/images/posts/laravel-mcp-beta/inline-02.jpg)
-
-](/laravel-boost/)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="/laravel-boost/">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">Laravel Boost</div>
+<div class="bookmark-card-description">This week, I took Laravel Boost for a spin. Boost is a new package by Laravel that, in their own words: &quot;Accelerates AI-assisted development by providing the essential context and…</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="/favicon.png" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">Jon Purvis</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDd8fHJvY2tldHxlbnwwfHx8fDE3ODE0ODMwOTJ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=2000" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 Laravel MCP provides an intuitive framework for AI agents to interact with your application. Let's take a look at how it works:
 

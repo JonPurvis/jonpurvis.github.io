@@ -30,10 +30,15 @@ const {
 
 const loading = eager ? 'eager' : 'lazy';
 const iconLoading = eagerIcon ? 'eager' : 'lazy';
+const isExternal = /^https?:\/\//i.test(href) && !/jonathanpurvis\.co\.uk/i.test(href);
 ---
 
 <figure class="bookmark-card">
-  <a class="bookmark-card-link" href={href} target="_blank" rel="noopener noreferrer">
+  <a
+    class="bookmark-card-link"
+    href={href}
+    {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+  >
     <div class="bookmark-card-content">
       <div class="bookmark-card-title">{title}</div>
       <div class="bookmark-card-description">{description}</div>

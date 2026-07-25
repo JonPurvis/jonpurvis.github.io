@@ -12,9 +12,9 @@ feature_image_credit:
   profile_url: https://unsplash.com/@realaxer?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  PHP 8.5 is fast approaching. I wanted to look at some of the features I'm most excited about. One
-  of which is, the pipe operator. This makes it easier for developers who need to chain multiple
-  callables who previously…
+  PHP 8.5 is fast approaching. I wanted to look at some of the features I'm most excited
+  about. One of which is, the pipe operator. This makes it easier for developers who need to
+  chain multiple callables who previously…
 ---
 
 PHP 8.5 is fast approaching. I wanted to look at some of the features I'm most excited about. One of which is, the pipe operator. This makes it easier for developers who need to chain multiple callables who previously may have done something like this:
@@ -45,24 +45,33 @@ I think this is easier to read and follow what it's doing.
 
 If you want to take a look over the RFC, you can find that below:
 
-[
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://wiki.php.net/rfc/pipe-operator-v3" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">PHP: rfc:pipe-operator-v3</div>
 
-PHP: rfc:pipe-operator-v3
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/icon/favicon-005cab4e-7168-4fc2-a49b-b17d67c29182.ico" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">wiki.php.net</span>
+</div>
+</div>
 
-![](/images/posts/php-8-5-pipe-operator/inline-01.ico)
-
-](https://wiki.php.net/rfc/pipe-operator-v3)
+</a>
+</figure>
 
 If you want to take a look over the Pull Request that implemented this feature, that can be found here:
 
-[
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://github.com/php/php-src/pull/17118" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">RFC: Pipe operator by Crell · Pull Request #17118 · php/php-src</div>
+<div class="bookmark-card-description">cf: https://wiki.php.net/rfc/pipe-operator-v3 Vote has been approved, code seems clean, it should be mergable as soon as CI is happy.</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">GitHub</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://opengraph.githubassets.com/1/php/php-src/pull/17118" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
-RFC: Pipe operator by Crell · Pull Request #17118 · php/php-src
-
-cf: https://wiki.php.net/rfc/pipe-operator-v3 Vote has been approved, code seems clean, it should be mergable as soon as CI is happy.
-
-![](/images/posts/php-8-5-pipe-operator/inline-02.svg)GitHubphp
-
-![](/images/posts/php-8-5-pipe-operator/inline-03.jpg)
-
-](https://github.com/php/php-src/pull/17118)

@@ -12,9 +12,9 @@ feature_image_credit:
   profile_url: https://unsplash.com/@drewsonixx?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  If you use PHPStorm, chances are, you've either heard of or are using the Laravel Idea plugin.
-  Laravel Idea makes developing with Laravel within PHPStorm so much better. Here's a few things it
-  can do: * Smart…
+  If you use PHPStorm, chances are, you've either heard of or are using the Laravel Idea
+  plugin. Laravel Idea makes developing with Laravel within PHPStorm so much better. Here's
+  a few things it can do: Smart…
 ---
 
 If you use PHPStorm, chances are, you've either heard of or are using the Laravel Idea plugin. Laravel Idea makes developing with Laravel within PHPStorm *so* much better. Here's a few things it can do:
@@ -27,16 +27,18 @@ If you use PHPStorm, chances are, you've either heard of or are using the Larave
 
 Well, up until now, there was a cost for this plugin. It was definitely worth the price but Jetbrains announced last month that the plugin is now free! You can read the official announcement below:
 
-[
-
-The Laravel Idea Plugin Is Now Free for PhpStorm Users | The PhpStorm Blog
-
-Starting July 30, 2025, we’re making Laravel Idea free for PhpStorm users. If you have the Laravel Idea plugin installed, you get full access to all plugin features at no extra cost.
-
-![](/images/posts/laravel-idea-is-now-free/inline-01.svg)The JetBrains BlogHanna Yakush
-
-![](/images/posts/laravel-idea-is-now-free/inline-02.png)
-
-](https://blog.jetbrains.com/phpstorm/2025/07/laravel-idea-is-now-free/?utm_campaign=laravel-free&utm_medium=referral&utm_source=laravel-news.com)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://blog.jetbrains.com/phpstorm/2025/07/laravel-idea-is-now-free/?utm_campaign=laravel-free&amp;utm_medium=referral&amp;utm_source=laravel-news.com" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">The Laravel Idea Plugin Is Now Free for PhpStorm Users | The PhpStorm Blog</div>
+<div class="bookmark-card-description">Starting July 30, 2025, we’re making Laravel Idea free for PhpStorm users. If you have the Laravel Idea plugin installed, you get full access to all plugin features at no extra…</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/icon/icon-6d3ca6fd-ce09-4255-9a32-c743b168efee.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">Hanna Yakush</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/thumbnail/Social_Share_Blog_laravel-idea-11d4d518-7b1b-4fd2-8ade-928f3b1357f7.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 Now there is no excuse to not try out Laravel Idea!

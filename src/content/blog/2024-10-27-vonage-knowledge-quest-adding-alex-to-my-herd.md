@@ -13,9 +13,9 @@ feature_image_credit:
   profile_url: https://unsplash.com/@nejc_soklic?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  Earlier this week, I had the pleasure of joining Vonage for the first in their "Knowledge Quest"
-  series, which is going to be a mixture of free online courses and content that anyone can join in
-  and watch. For the first…
+  Earlier this week, I had the pleasure of joining for the first in their "Knowledge Quest"
+  series, which is going to be a mixture of free online courses and content that anyone can
+  join in and watch. For the first…
 ---
 
 Earlier this week, I had the pleasure of joining [Vonage](https://www.vonage.com/) for the first in their "Knowledge Quest" series, which is going to be a mixture of free online courses and content that anyone can join in and watch.
@@ -28,14 +28,21 @@ In addition to knowledge, those of us that did sign up for the first session, we
 
 If you want to check out the first in the Knowledge Quest series, click the link below!
 
-[
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://www.crowdcast.io/c/php-security" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">PHP Security Over 9000: Vonage 2FA approaches</div>
+<div class="bookmark-card-description">Register now for PHP Security Over 9000: Vonage 2FA approaches on crowdcast, scheduled to go live on October 23, 2024, 12:30 PM GMT+1.</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://www.crowdcast.io/static/apple-touch-icon.png" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">VonageDev</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://images-production-crowdcast-lambdas.s3.amazonaws.com/events/70f660b1-ca16-4a79-8d3b-d4214c7fef0f/cover-photo-1728982381822.jpg" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
-PHP Security Over 9000: Vonage 2FA approaches
-
-Register now for PHP Security Over 9000: Vonage 2FA approaches on crowdcast, scheduled to go live on October 23, 2024, 12:30 PM GMT+1.
-
-![](https://www.crowdcast.io/static/apple-touch-icon.png)crowdcastVonageDev
+crowdcastVonageDev
 
 ![](https://images-production-crowdcast-lambdas.s3.amazonaws.com/events/70f660b1-ca16-4a79-8d3b-d4214c7fef0f/cover-photo-1728982381822.jpg)
 
-](https://www.crowdcast.io/c/php-security)

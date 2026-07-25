@@ -13,22 +13,30 @@ feature_image_credit:
   profile_url: https://unsplash.com/@choys_?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  Earlier this week, Ondřej Mirtes creator of PHPStan released PHPStan 2.0 � PHPStan 2.0 Released
-  With Level 10 and Elephpants!PHPStan PHPStan is one of my absolute favourite PHP tools and has
-  saved me so many times by…
+  Earlier this week, creator of released PHPStan 2.0 🥳 PHPStan PHPStan is one of my
+  absolute favourite PHP tools and has saved me so many times by highlighting issues that I
+  just didn't think about when writing my code.…
 ---
 
 Earlier this week, [Ondřej Mirtes](https://x.com/OndrejMirtes) creator of [PHPStan](https://phpstan.org/) released PHPStan 2.0 🥳
 
-[
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://phpstan.org/blog/phpstan-2-0-released-level-10-elephpants" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">PHPStan 2.0 Released With Level 10 and Elephpants!</div>
 
-PHPStan 2.0 Released With Level 10 and Elephpants!
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://phpstan.org/favicon.356933f5.png" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">phpstan.org</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://phpstan.org/images/social-phpstan-2-0-released-level-10-elephpants.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
-![](https://phpstan.org/favicon.356933f5.png)PHPStan
+PHPStan
 
 ![](https://phpstan.org/images/social-phpstan-2-0-released-level-10-elephpants.png)
-
-](https://phpstan.org/blog/phpstan-2-0-released-level-10-elephpants)
 
 PHPStan is one of my absolute favourite PHP tools and has saved me so many times by highlighting issues that I just didn't think about when writing my code. By hooking it into your CI/CD pipeline, you can be sure that issues get flagged before they reach production!
 

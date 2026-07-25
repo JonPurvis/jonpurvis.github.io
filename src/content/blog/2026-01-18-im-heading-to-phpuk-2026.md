@@ -12,26 +12,28 @@ feature_image_credit:
   profile_url: https://unsplash.com/@lucas_davies?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  I've just booked my ticket for PHPUK 2026! After last years conference, I was 100% sure I was
-  going back and I'm really looking forward to getting back down to London for another conference,
-  networking with like-minded…
+  I've just booked my ticket for PHPUK 2026! After last years conference, I was 100% sure I
+  was going back and I'm really looking forward to getting back down to London for another
+  conference, networking with like-minded…
 ---
 
 I've just booked my ticket for PHPUK 2026! After last years conference, I was 100% sure I was going back and I'm really looking forward to getting back down to London for another conference, networking with like-minded people and of course, listening to all of the awesome talks!
 
 If you want to read my recap of PHPUK 2025, here is the post:
 
-[
-
-PHPUK 2025 Conference
-
-Earlier this week I had the pleasure of heading down to London to attend the PHPUK 2025 Conference at The Brewery! It was the first conference I’d ever been to and thoroughly enjoyed it. I’d recommend everyone tries going to a conference at least once in their lifetime, I’m sure
-
-![](/images/posts/im-heading-to-phpuk-2026/inline-01.ico)Jon PurvisJon Purvis
-
-![](/images/posts/im-heading-to-phpuk-2026/inline-02.jpg)
-
-](/phpuk-2025/)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="/phpuk-2025/">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">PHPUK 2025 Conference</div>
+<div class="bookmark-card-description">Earlier this week I had the pleasure of heading down to London to attend the PHPUK 2025 Conference at The Brewery! It was the first conference I'd ever been to and thoroughly…</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="/favicon.png" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">Jon Purvis</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://images.unsplash.com/photo-1586184418947-e59e92525215?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fGtpbmdzJTIwY3Jvc3N8ZW58MHx8fHwxNzQwMjc1NDM0fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 I'm changing it up this year as the biggest mistake I made last year is doing the whole trip in one day, that meant waking up to catch a 5:30am train and then not getting back home until after midnight! It's safe to say, I was exhausted!
 

@@ -12,9 +12,9 @@ feature_image_credit:
   profile_url: https://unsplash.com/@theshubhamdhage?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  Over the last couple of years, I've been using and contributing to https://elephpant.me/ which is
-  a website for collectors of PHP Elephpants to manage their collections and find new trade
-  partners. After over a year of…
+  Over the last couple of years, I've been using and contributing to which is a website for
+  collectors of PHP Elephpants to manage their collections and find new trade partners.
+  After over a year of inactivity on the…
 ---
 
 Over the last couple of years, I've been using and contributing to [https://elephpant.me/](https://elephpant.me/) which is a website for collectors of PHP Elephpants to manage their collections and find new trade partners.
@@ -42,16 +42,18 @@ I decided the match the purple so it's closer to that used on the website for th
 
 If you want to take a look over the code, you can do so here:
 
-[
-
-Modernise the Codebase by JonPurvis · Pull Request #256 · jgrossi/elephpant.me
-
-Overview Firstly, thanks to @jgrossi for inviting me to be a maintainer on this project! I think the first port of call is to update the tech stack to a more modern stack and give the site a bit of…
-
-![](/images/posts/im-now-maintaining-elephpant-me/inline-05.svg)GitHubjgrossi
-
-![](/images/posts/im-now-maintaining-elephpant-me/inline-06.jpg)
-
-](https://github.com/jgrossi/elephpant.me/pull/256)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://github.com/jgrossi/elephpant.me/pull/256" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">Modernise the Codebase by JonPurvis · Pull Request #256 · jgrossi/elephpant.me</div>
+<div class="bookmark-card-description">Overview Firstly, thanks to @jgrossi for inviting me to be a maintainer on this project! I think the first port of call is to update the tech stack to a more modern stack and give…</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">GitHub</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://opengraph.githubassets.com/1/jgrossi/elephpant.me/pull/256" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 There's a few things that need to happen before this PR can be merged, including moving the site over to a more modern server that will support PHP 8.5. Whilst that happens, I'll continue to keep this branch up to date with changes that get added to `master`. I also want to update it to Laravel 13 and Vite 8 when they release.

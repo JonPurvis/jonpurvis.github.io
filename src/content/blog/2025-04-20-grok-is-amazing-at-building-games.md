@@ -14,22 +14,28 @@ feature_image_credit:
   profile_url: https://unsplash.com/@martz90?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  I decided to give Grok Studio a try over the past week as I'm always interested in trying out new
-  AI tools and even though I'm a heavy user of X, I actually rarely use Grok. During my time using
-  it, I discovered that…
+  I decided to give Grok Studio a try over the past week as I'm always interested in trying
+  out new AI tools and even though I'm a heavy user of X, I actually rarely use Grok. During
+  my time using it, I discovered that…
 ---
 
 I decided to give Grok Studio a try over the past week as I'm always interested in trying out new AI tools and even though I'm a heavy user of X, I actually rarely use Grok. During my time using it, I discovered that it's actually really good at building games!
 
 I started building an astroids type game but instead of astroids, I settled on Zombies. The concept worked and it was fun but I then decided to go back to space and came up with a game called "X-Wing Battle"
 
-[
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://jonpurvis.github.io/xwing-battle/" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">X-Wing Battle</div>
 
-X-Wing Battle
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">GitHub</span>
+</div>
+</div>
 
-![](https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://github.io/xwing-battle/&size=128)
-
-](https://jonpurvis.github.io/xwing-battle/)
+</a>
+</figure>
 
 It's hosted on GitHub pages so if you click the link above, it'll take you straight to it so you can play! I'm really happy with the outcome and the fact I wrote none of the code myself, it was built purely with me going back and forth with Grok is also pretty amazing. I want to keep working on it to explore prompt engineering more, but for starters it has the following features:
 

@@ -13,24 +13,26 @@ feature_image_credit:
   profile_url: https://unsplash.com/@datalore?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  This weekend, I decided to work on a new plugin for PestPHP. If you don't already know, PestPHP is
-  one of my absolute favourite tools. I use it on a pretty much daily basis and I love working with
-  it, whether it be…
+  This weekend, I decided to work on a new plugin for . If you don't already know, PestPHP
+  is one of my absolute favourite tools. I use it on a pretty much daily basis and I love
+  working with it, whether it be adding new…
 ---
 
 This weekend, I decided to work on a new plugin for [PestPHP](https://pestphp.com/). If you don't already know, PestPHP is one of my absolute favourite tools. I use it on a pretty much daily basis and I love working with it, whether it be adding new Expectations to the PestPHP framework, or consuming it in one of my applications. I've wrote about it on this blog before, so feel free to check out my other posts:
 
-[
-
-PestPHP - Jon Purvis
-
-All of my posts related to PestPHP, the elegant PHP testing framework. With a focus on simplicity, it is meticulously designed to bring back the joy of testing in PHP.
-
-![](/images/posts/announcing-profanify/inline-01.ico)Jon Purvis
-
-![](https://jonathanpurvis.co.uk/content/images/2024/08/PestPHP-Banner.png)
-
-](/tag/pestphp/)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="/tag/pestphp/" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">PestPHP - Jon Purvis</div>
+<div class="bookmark-card-description">All of my posts related to PestPHP, the elegant PHP testing framework. With a focus on simplicity, it is meticulously designed to bring back the joy of testing in PHP.</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://jonathanpurvis.co.uk/favicon.ico" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">Jon Purvis</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://jonathanpurvis.co.uk/content/images/2024/08/PestPHP-Banner.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 Anyway, on to Profanify! The package is a Profanity checker for PestPHP, which makes it incredibly easy to scan your application for usages of Profanity. As developers, we've all faced moments of frustration, whether it be debugging an issue or trying to decipher confusing code written by someone else. These moments can sometimes result in the inclusion of profanity in your code.
 
@@ -44,17 +46,19 @@ The issue ended up getting resolved, and it turns out it was actually a 3rd part
 
 Profanify seemed like the perfect candidate to become a PestPHP plugin, and I already had experience building PestPHP plugins thanks to one I built earlier this year called Lawman:
 
-[
-
-GitHub - JonPurvis/lawman: 🤠 A PestPHP Plugin to Help with Architecture Testing for SaloonPHP Integrations.
-
-🤠 A PestPHP Plugin to Help with Architecture Testing for SaloonPHP Integrations. - JonPurvis/lawman
-
-![](https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg)GitHubJonPurvis
-
-![](https://opengraph.githubassets.com/c2cc422556a251ba269d7c95b9f9b93a421c0ac4c2d115786f4dfe0e358f8d85/JonPurvis/lawman)
-
-](https://github.com/JonPurvis/lawman)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://github.com/JonPurvis/lawman" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">GitHub - JonPurvis/lawman: 🤠 A PestPHP Plugin to Help with Architecture Testing for SaloonPHP Integrations.</div>
+<div class="bookmark-card-description">🤠 A PestPHP Plugin to Help with Architecture Testing for SaloonPHP Integrations. - JonPurvis/lawman</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">GitHub</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://opengraph.githubassets.com/c2cc422556a251ba269d7c95b9f9b93a421c0ac4c2d115786f4dfe0e358f8d85/JonPurvis/lawman" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 I laid the groundwork on Friday night and then on Saturday morning / afternoon, I hacked away until I had something that worked, I spent a couple of hours tinkering with it until I was completely happy with it, before releasing it to the world!
 
@@ -79,17 +83,19 @@ test('the application contains no profanity')
 
 I had fun building this package and I hope it comes in useful for your projects! You can find the repo for Profanify below, so feel free to check it out if you get chance and let me know what you think! Contributions are always welcome, just open a Pull Request!
 
-[
-
-GitHub - JonPurvis/profanify: 🧼 A PestPHP Plugin to Help Catch Profanity in Your Applications.
-
-🧼 A PestPHP Plugin to Help Catch Profanity in Your Applications. - JonPurvis/profanify
-
-![](https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg)GitHubJonPurvis
-
-![](https://opengraph.githubassets.com/87ac3aad85107c7ce32e88326cf5ecd581da908934aac391d2fb6065c5dd5b88/JonPurvis/profanify)
-
-](https://github.com/JonPurvis/profanify)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://github.com/JonPurvis/profanify" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">GitHub - JonPurvis/profanify: 🧼 A PestPHP Plugin to Help Catch Profanity in Your Applications.</div>
+<div class="bookmark-card-description">🧼 A PestPHP Plugin to Help Catch Profanity in Your Applications. - JonPurvis/profanify</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">GitHub</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://opengraph.githubassets.com/87ac3aad85107c7ce32e88326cf5ecd581da908934aac391d2fb6065c5dd5b88/JonPurvis/profanify" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 To get started using the package, you can use Composer to add it to your application as a dev dependancy
 

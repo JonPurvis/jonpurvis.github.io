@@ -12,9 +12,9 @@ feature_image_credit:
   profile_url: https://unsplash.com/@mike_van_den_bos?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  This week I decided to upgrade the SaaS product I'm helping build from PHP8.3 to PHP8.4. I'm not a
-  huge fan of upgrading straight away, but I also didn't want to fall behind and given it's been out
-  since November last…
+  This week I decided to upgrade the SaaS product I'm helping build from PHP8.3 to PHP8.4.
+  I'm not a huge fan of upgrading straight away, but I also didn't want to fall behind and
+  given it's been out since November last…
 ---
 
 This week I decided to upgrade the SaaS product I'm helping build from PHP8.3 to PHP8.4. I'm not a huge fan of upgrading straight away, but I also didn't want to fall behind and given it's been out since November last year, I figured enough time had passed for any major issues to have been spotted and fixed.
@@ -43,17 +43,19 @@ Secondly, the `spatie/laravel-sitemap` package was giving a deprecation warning 
 
 This is a package I *did* need to keep, so I set about getting rid of that warning and submitted the following PR:
 
-[
-
-Make \`$response\` param explicitly nullable by JonPurvis · Pull Request #564 · spatie/laravel-sitemap
-
-Hey 👋 Whilst upgrading my application to PHP8.4, I was getting these deprecation warnings when running my test suite: {closure:Spatie\\Sitemap\\SitemapGenerator::\_\_construct():48}(): Implicitly mark…
-
-![](https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg)GitHubspatie
-
-![](https://opengraph.githubassets.com/a856967f17fbee8a9ab2836c40542a8f66c5b3ee6d516bde17c425dd9eda3f0d/spatie/laravel-sitemap/pull/564)
-
-](https://github.com/spatie/laravel-sitemap/pull/564)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://github.com/spatie/laravel-sitemap/pull/564" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">Make `$response` param explicitly nullable by JonPurvis · Pull Request #564 · spatie/laravel-sitemap</div>
+<div class="bookmark-card-description">Hey 👋 Whilst upgrading my application to PHP8.4, I was getting these deprecation warnings when running my test suite:…</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">GitHub</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://opengraph.githubassets.com/a856967f17fbee8a9ab2836c40542a8f66c5b3ee6d516bde17c425dd9eda3f0d/spatie/laravel-sitemap/pull/564" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 [Freek](https://x.com/freekmurze) accepted the PR, merged it and then tagged a new release of the package which I then pulled down and just like that, no more deprecation warnings!
 

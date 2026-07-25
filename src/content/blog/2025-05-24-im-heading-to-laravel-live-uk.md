@@ -12,22 +12,26 @@ feature_image_credit:
   profile_url: https://unsplash.com/@giamboscaro?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  You may remember I was thinking about heading down to London to attend Laravel Live UK later this
-  year, thanks to the great time I had at PHPUK Jon PurvisHello! � Welcome to my place on the
-  Internet. I’m a PHP…
+  You may remember I was thinking about heading down to London to attend Laravel Live UK
+  later this year, thanks to the great time I had at PHPUK Well, this week I finally bought
+  my ticket so I'll be attending Laravel…
 ---
 
 You may remember I was thinking about heading down to London to attend Laravel Live UK later this year, thanks to the great time I had at PHPUK
 
-[
-
-Jon Purvis
-
-Hello! 👋 Welcome to my place on the Internet. I’m a PHP Developer, Gamer and Collector of Elephpants.
-
-![](/images/posts/im-heading-to-laravel-live-uk/inline-01.ico)Jon Purvis
-
-](/should-i-go-to-laravel-live/)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="/should-i-go-to-laravel-live/">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">Should I go to Laravel Live?</div>
+<div class="bookmark-card-description">PHPUK 2025 earlier this year was my very first developer conference and I absolutely loved it. The talks were fantastic and the people I met and networked with between talks were</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="/favicon.png" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">Jon Purvis</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fGxvbmRvbnxlbnwwfHx8fDE3NTMwNDQyNTF8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=2000" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 Well, this week I finally bought my ticket so I'll be attending Laravel Live on June 10th and 11th! I'm *so* excited for it! I'm looking forward to all of the speakers but in particular [Dan Harrin](https://x.com/danjharrin), who will be talking about Filament V4, [Joe Dixon](https://x.com/joshcirre) who'll be talking about Laravel Cloud, [Josh Cirre](https://x.com/joshcirre) who'll be talking about Laravel Nightwatch, [Simon Hamp](https://x.com/simonhamp) who'll be talking about NativePHP, [Dan Johnson](https://x.com/danjohnsonxyz) who'll be talking about using PHP to power electronics and [James Titcumb](https://x.com/asgrim) who'll be taking about PiePHP, the PECL replacement.
 

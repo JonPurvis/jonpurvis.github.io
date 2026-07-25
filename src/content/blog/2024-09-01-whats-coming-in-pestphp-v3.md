@@ -13,9 +13,9 @@ feature_image_credit:
   profile_url: https://unsplash.com/@joshredd?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  Now that LarcaonUS is over for another year, it's time to look forward to the release of some of
-  the stuff that was shown off. One of those things was v3 of PestPHP. Nuno Maduro did a fantastic
-  job of showing off what's…
+  Now that is over for another year, it's time to look forward to the release of some of the
+  stuff that was shown off. One of those things was v3 of . did a fantastic job of showing
+  off what's coming to PestPHP with this…
 ---
 
 Now that [LarcaonUS](https://laracon.us/) is over for another year, it's time to look forward to the release of some of the stuff that was shown off. One of those things was v3 of [PestPHP](https://pestphp.com/). [Nuno Maduro](https://x.com/enunomaduro) did a fantastic job of showing off what's coming to PestPHP with this next major release. His talk focused on 3 main features:
@@ -157,16 +157,18 @@ To close, I'm really looking forward to be able to start using PestPHP v3 in my 
 
 This article covered some of the feature's I'm looking forward to implementing in my test suites, but for the "Official" release document, you can find that over on the PestPHP website:
 
-[
-
-Pest v3 Now Available | Pest - The elegant PHP Testing Framework
-
-Today, we’re thrilled to announce the release of Pest 3. As we announced at Laracon US, Pest 3 introduces Mutation Testing, arch presets, Team Management, New Configuration API, multiple improvements to Architectural Testing & more.
-
-![](https://pestphp.com/www/favicon.svg)The elegant PHP Testing FrameworkNuno Maduro
-
-![](https://pestphp.com/assets/img/pest3-now-available.jpg)
-
-](https://pestphp.com/docs/pest3-now-available)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://pestphp.com/docs/pest3-now-available" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">Pest v3 Now Available | Pest - The elegant PHP Testing Framework</div>
+<div class="bookmark-card-description">Today, we’re thrilled to announce the release of Pest 3. As we announced at Laracon US, Pest 3 introduces Mutation Testing, arch presets, Team Management, New Configuration API,…</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://pestphp.com/www/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">Nuno Maduro</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://pestphp.com/assets/img/pest3-now-available.jpg" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 Happy Testing!

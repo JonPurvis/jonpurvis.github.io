@@ -13,9 +13,9 @@ feature_image_credit:
   profile_url: https://unsplash.com/@growtika?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  One of the Shopify Apps I've been working on recently uses PrismPHP. PrismPHP forms some of the
-  foundation of the Laravel AI SDK which we hope to switch to at some point however for most of the
-  development of our app,…
+  One of the Shopify Apps I've been working on recently uses PrismPHP. PrismPHP forms some
+  of the foundation of the Laravel AI SDK which we hope to switch to at some point however
+  for most of the development of our app,…
 ---
 
 One of the Shopify Apps I've been working on recently uses PrismPHP. PrismPHP forms some of the foundation of the Laravel AI SDK which we hope to switch to at some point however for most of the development of our app, the Laravel AI SDK required a PHP84 minimum, we're currently on PHP83.
@@ -56,14 +56,17 @@ The original video was a bit longer, I trimmed out most of the wait time so you 
 
 The PR is yet to be merged, but you can take a look at the implementation below. [Pushpak](https://x.com/pushpak1300), from the Laravel team has actually assigned themself to the PR, so could this mean it's going to get worked on further and we'll soon see it in the package? Hopefully!
 
-[
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://github.com/laravel/ai/pull/305" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">Video Support by JonPurvis · Pull Request #305 · laravel/ai</div>
+<div class="bookmark-card-description">Hey 👋 This PR lets you generate videos with the AI SDK, pretty much the same way it already works images. Here are some key points: Video::of() API, Same idea as images: describe…</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">GitHub</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://opengraph.githubassets.com/1/laravel/ai/pull/305" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
-Video Support by JonPurvis · Pull Request #305 · laravel/ai
-
-Hey 👋 This PR lets you generate videos with the AI SDK, pretty much the same way it already works images. Here are some key points: Video::of() API, Same idea as images: describe the clip, tweak o…
-
-![](https://static.ghost.org/v5.0.0/images/link-icon.svg)GitHublaravel
-
-![](/images/posts/adding-video-support-to-the-laravel-ai-sdk/inline-01.jpg)
-
-](https://github.com/laravel/ai/pull/305)

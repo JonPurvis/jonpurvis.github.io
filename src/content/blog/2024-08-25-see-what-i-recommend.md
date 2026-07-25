@@ -12,9 +12,9 @@ feature_image_credit:
   profile_url: https://unsplash.com/@jrkorpa?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  I've just added Recommendations to this website, which is a native Ghost feature, allowing you to
-  recommend your favourite websites with your audience. I read a lot of blogs within the tech space
-  and I wanted a way of…
+  I've just added Recommendations to this website, which is a native Ghost feature, allowing
+  you to recommend your favourite websites with your audience. I read a lot of blogs within
+  the tech space and I wanted a way of…
 ---
 
 I've just added Recommendations to this website, which is a native Ghost feature, allowing you to recommend your favourite websites with your audience.
@@ -23,17 +23,19 @@ I read a lot of blogs within the tech space and I wanted a way of highlighting m
 
 The great thing about Ghost Recommendations is it doesn't have to be only Ghost websites, in fact, at the time of writing this, the only Ghost website I'm recommending is:
 
-[
-
-Securing Laravel
-
-The essential security resource for Laravel developers.
-
-![](/images/posts/see-what-i-recommend/inline-01.png)Securing LaravelStephen Rees-Carter
-
-![](/images/posts/see-what-i-recommend/inline-02.png)
-
-](https://securinglaravel.com/)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://securinglaravel.com/" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">Securing Laravel</div>
+<div class="bookmark-card-description">The essential security resource for Laravel developers.</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://securinglaravel.com/content/images/size/w256h256/2024/03/Securing-Laravel-Round-Logo-1.png" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">Stephen Rees-Carter</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://securinglaravel.com/content/images/size/w1200/2024/04/Securing-Laravel-Social-Header--1--1.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 I won't go into all of the specifics about Recommendations, as Ghost themselves have [a good blog post](https://ghost.org/changelog/recommendations/) which highlights all the information.
 

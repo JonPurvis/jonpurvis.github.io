@@ -13,26 +13,28 @@ feature_image_credit:
   profile_url: https://unsplash.com/@paulius005?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  Redacting data in models is important, depending on your application. If someone chooses to delete
-  their account, you may wish to retain some of the data for analytics, whilst removing some PII
-  such as name, email…
+  Redacting data in models is important, depending on your application. If someone chooses
+  to delete their account, you may wish to retain some of the data for analytics, whilst
+  removing some PII such as name, email…
 ---
 
 Redacting data in models is important, depending on your application. If someone chooses to delete their account, you may wish to retain some of the data for analytics, whilst removing some PII such as name, email address, phone number etc.
 
 Recently, my friend [Ash Allen](https://ashallendesign.co.uk/) launched a new Composer package which makes this super easy to do. You can check the package out on Github below:
 
-[
-
-GitHub - ash-jc-allen/redactable-models: A package that allows you to redact, obfuscate, or mask data in your Laravel models.
-
-A package that allows you to redact, obfuscate, or mask data in your Laravel models. - ash-jc-allen/redactable-models
-
-![](/images/posts/redactable-models/inline-01.svg)GitHubash-jc-allen
-
-![](/images/posts/redactable-models/inline-02.jpg)
-
-](https://github.com/ash-jc-allen/redactable-models)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://github.com/ash-jc-allen/redactable-models" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">GitHub - ash-jc-allen/redactable-models: A package that allows you to redact, obfuscate, or mask data in your Laravel models.</div>
+<div class="bookmark-card-description">A package that allows you to redact, obfuscate, or mask data in your Laravel models. - ash-jc-allen/redactable-models</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">GitHub</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://opengraph.githubassets.com/1/ash-jc-allen/redactable-models" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 Using the package is a piece of cake. Let's say we have a `User` model:
 
@@ -93,14 +95,17 @@ And let the package do it's work!
 
 It's a fantastic package and Ash did a wonderful job at bringing it to life. There's a few more features worth exploring, which are all detailed on the Github repo, click below to view that!
 
-[
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://github.com/ash-jc-allen/redactable-models" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">GitHub - ash-jc-allen/redactable-models: A package that allows you to redact, obfuscate, or mask data in your Laravel models.</div>
+<div class="bookmark-card-description">A package that allows you to redact, obfuscate, or mask data in your Laravel models. - ash-jc-allen/redactable-models</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">GitHub</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://opengraph.githubassets.com/1/ash-jc-allen/redactable-models" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
-GitHub - ash-jc-allen/redactable-models: A package that allows you to redact, obfuscate, or mask data in your Laravel models.
-
-A package that allows you to redact, obfuscate, or mask data in your Laravel models. - ash-jc-allen/redactable-models
-
-![](/images/posts/redactable-models/inline-03.svg)GitHubash-jc-allen
-
-![](/images/posts/redactable-models/inline-04.jpg)
-
-](https://github.com/ash-jc-allen/redactable-models)

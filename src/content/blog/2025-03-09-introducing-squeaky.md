@@ -13,24 +13,26 @@ feature_image_credit:
   profile_url: https://unsplash.com/@pillepriske?utm_source=jonathanpurvis&utm_medium=referral
   unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
 excerpt: >-
-  It's been a while since I've created a new package, so I'd like to introduce you to Squeaky! A
-  Laravel validation rule to help catch profanity. You can check out the repo below, which includes
-  instructions on how to set…
+  It's been a while since I've created a new package, so I'd like to introduce you to ! A
+  Laravel validation rule to help catch profanity. You can check out the repo below, which
+  includes instructions on how to set it up…
 ---
 
 It's been a while since I've created a new package, so I'd like to introduce you to [Squeaky](https://github.com/JonPurvis/squeaky)! A Laravel validation rule to help catch profanity. You can check out the repo below, which includes instructions on how to set it up and some examples to get you started:
 
-[
-
-GitHub - JonPurvis/squeaky: ✨ A Laravel Validation Rule to Help Catch Profanity.
-
-✨ A Laravel Validation Rule to Help Catch Profanity. - JonPurvis/squeaky
-
-![](https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg)GitHubJonPurvis
-
-![](https://opengraph.githubassets.com/c5313b6c508bcff26f4a85268dee854f43c1a8a7b85f6ee8bbf60aa626c74a8e/JonPurvis/squeaky)
-
-](https://github.com/JonPurvis/squeaky)
+<figure class="bookmark-card">
+<a class="bookmark-card-link" href="https://github.com/JonPurvis/squeaky" target="_blank" rel="noopener noreferrer">
+<div class="bookmark-card-content">
+<div class="bookmark-card-title">GitHub - JonPurvis/squeaky: ✨ A Laravel Validation Rule to Help Catch Profanity.</div>
+<div class="bookmark-card-description">✨ A Laravel Validation Rule to Help Catch Profanity. - JonPurvis/squeaky</div>
+<div class="bookmark-card-meta">
+<img class="bookmark-card-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<span class="bookmark-card-publisher">GitHub</span>
+</div>
+</div>
+<div class="bookmark-card-thumbnail"><img src="https://opengraph.githubassets.com/c5313b6c508bcff26f4a85268dee854f43c1a8a7b85f6ee8bbf60aa626c74a8e/JonPurvis/squeaky" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+</a>
+</figure>
 
 So how did Squeaky come about? Well, [Profanify](https://github.com/JonPurvis/profanify) recently enjoyed an [article on Laravel News](https://laravel-news.com/profanify), highlighting the package and what it can do. In the Tweet for that article was this reply:
 
