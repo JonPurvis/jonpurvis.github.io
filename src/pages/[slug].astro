@@ -2,7 +2,6 @@
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SiteImage from '../components/SiteImage.astro';
 import TwitterEmbeds from '../components/TwitterEmbeds.astro';
 import { SITE_TITLE, SITE_URL, SITE_LOGO, TAG_LABELS, SOCIAL_LINKS, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../consts';
 import {
@@ -133,44 +132,6 @@ const jsonLd = isPost
           <h1 data-pagefind-meta="title">{page!.data.title}</h1>
         </div>
       </header>
-    )
-  }
-
-  {
-    isPost && post.data.feature_image && (
-      <figure class="feature-figure" data-pagefind-ignore>
-        <div class="content-width">
-          <SiteImage
-            src={post.data.feature_image}
-            alt=""
-            width={1200}
-            height={800}
-            loading="eager"
-            widths={[640, 960, 1200]}
-            sizes="(min-width: 760px) 720px, 100vw"
-          />
-          {post.data.feature_image_credit && (
-            <figcaption class="feature-credit">
-              Photo by{' '}
-              <a
-                href={post.data.feature_image_credit.profile_url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {post.data.feature_image_credit.name}
-              </a>
-              {' / '}
-              <a
-                href={post.data.feature_image_credit.unsplash_url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Unsplash
-              </a>
-            </figcaption>
-          )}
-        </div>
-      </figure>
     )
   }
 

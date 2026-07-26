@@ -20,17 +20,10 @@ npm run preview
 
 ## Writing a post
 
-1. Add `src/content/blog/YYYY-MM-DD-slug.md` with frontmatter (`title`, `slug`, `date`, `tags`, `feature_image`, optional `feature_image_credit`).
-2. For Unsplash headers, include photographer credit:
-
-```yaml
-feature_image_credit:
-  name: Photographer Name
-  profile_url: https://unsplash.com/@handle?utm_source=jonathanpurvis&utm_medium=referral
-  unsplash_url: https://unsplash.com/?utm_source=jonathanpurvis&utm_medium=referral
-```
-
-3. Commit and push to `main` — GitHub Actions deploys automatically.
+1. Copy [`POST_TEMPLATE.md`](POST_TEMPLATE.md) to `src/content/blog/YYYY-MM-DD-slug.md`.
+2. Fill in the frontmatter (`title`, `slug`, `date`, `tags`, `feature_image`, optional `feature_image_credit` / `excerpt`).
+3. For Unsplash headers, keep the photographer credit block from the template.
+4. Commit and push to `main` — GitHub Actions deploys automatically.
 
 ## Stack
 
