@@ -21,19 +21,17 @@ It's a happy day for Laravel and Filament fans because Filament v4 is now stable
 
 For a full write-up, the Filament team created this fantastic article:
 
-Filament
-
 <figure class="bookmark-card">
 <a class="bookmark-card-link" href="https://filamentphp.com/insights/leandrocfe-whats-new-in-filament-v4" target="_blank" rel="noopener noreferrer">
 <div class="bookmark-card-content">
 <div class="bookmark-card-title">What’s new in Filament v4? - Feature Overview - Filament</div>
 <div class="bookmark-card-description">## Introduction **Filament v4** is here with a range of powerful, helpful updates. It’s faster, easier to use, and gives you more control when building applica…</div>
 <div class="bookmark-card-meta">
-<img class="bookmark-card-icon" src="https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/icon/apple-touch-icon-c1c03c3e-d833-469a-b552-9c0987714886.png" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<img class="bookmark-card-icon" src="https://filamentphp.com/favicon/apple-touch-icon.png" alt="" width="18" height="18" loading="lazy" decoding="async" />
 <span class="bookmark-card-publisher">filamentphp.com</span>
 </div>
 </div>
-<div class="bookmark-card-thumbnail"><img src="https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/thumbnail/leandrocfe-whats-new-in-filament-v4-53a53fa4-0bd0-44e7-b91c-b4d987dd1bf6.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+<div class="bookmark-card-thumbnail"><img src="https://filamentphp.com/og/insights/leandrocfe-whats-new-in-filament-v4.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
 </a>
 </figure>
 

@@ -31,11 +31,11 @@ At the time of writing, Holly is still up for sale on the PHP Arch store and cur
 <div class="bookmark-card-title">PHP / JS Tek 2026 “Holly” ElePHPant Plushy</div>
 <div class="bookmark-card-description">Meet Holly , the newest member of the herd and the official mascot of PHP / JS Tek 2026. Note: Product will start shipping June 17th, 2026. Holly is ready to join you for…</div>
 <div class="bookmark-card-meta">
-<img class="bookmark-card-icon" src="https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/icon/AXDt7ovPj9MCGI9K-72e9858f-904b-402e-8aa4-81bb86d91ec5.webp" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<img class="bookmark-card-icon" src="/images/bookmarks/holly-icon.webp" alt="" width="18" height="18" loading="lazy" decoding="async" />
 <span class="bookmark-card-publisher">PHP Architect</span>
 </div>
 </div>
-<div class="bookmark-card-thumbnail"><img src="https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/thumbnail/PNM1wg-ec9b4db2-925c-4552-a624-50045eb6d865.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+<div class="bookmark-card-thumbnail"><img src="/images/bookmarks/holly-thumb.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
 </a>
 </figure>
 

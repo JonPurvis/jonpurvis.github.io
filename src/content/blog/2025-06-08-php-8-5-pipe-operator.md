@@ -51,7 +51,7 @@ If you want to take a look over the RFC, you can find that below:
 <div class="bookmark-card-title">PHP: rfc:pipe-operator-v3</div>
 
 <div class="bookmark-card-meta">
-<img class="bookmark-card-icon" src="https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/icon/favicon-005cab4e-7168-4fc2-a49b-b17d67c29182.ico" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<img class="bookmark-card-icon" src="https://www.php.net/favicon.ico" alt="" width="18" height="18" loading="lazy" decoding="async" />
 <span class="bookmark-card-publisher">wiki.php.net</span>
 </div>
 </div>

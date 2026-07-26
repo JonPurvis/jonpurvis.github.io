@@ -33,11 +33,11 @@ Well, up until now, there was a cost for this plugin. It was definitely worth th
 <div class="bookmark-card-title">The Laravel Idea Plugin Is Now Free for PhpStorm Users | The PhpStorm Blog</div>
 <div class="bookmark-card-description">Starting July 30, 2025, we’re making Laravel Idea free for PhpStorm users. If you have the Laravel Idea plugin installed, you get full access to all plugin features at no extra…</div>
 <div class="bookmark-card-meta">
-<img class="bookmark-card-icon" src="https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/icon/icon-6d3ca6fd-ce09-4255-9a32-c743b168efee.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<img class="bookmark-card-icon" src="https://blog.jetbrains.com/wp-content/themes/jetbrains/assets/img/favicons/favicon.ico" alt="" width="18" height="18" loading="lazy" decoding="async" />
 <span class="bookmark-card-publisher">Hanna Yakush</span>
 </div>
 </div>
-<div class="bookmark-card-thumbnail"><img src="https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/thumbnail/Social_Share_Blog_laravel-idea-11d4d518-7b1b-4fd2-8ade-928f3b1357f7.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+<div class="bookmark-card-thumbnail"><img src="https://blog.jetbrains.com/wp-content/uploads/2025/07/Social_Share_Blog_laravel-idea.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
 </a>
 </figure>
 

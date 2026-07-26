@@ -1,4 +1,4 @@
-/** Tag metadata migrated from Ghost (name, description, feature image). */
+/** Tag metadata (name, description, feature image). */
 export type TagMeta = {
   name: string;
   description?: string;
@@ -30,8 +30,7 @@ export const TAGS: Record<string, TagMeta> = {
     name: 'PestPHP',
     description:
       'All of my posts related to PestPHP, the elegant PHP testing framework. With a focus on simplicity, it is meticulously designed to bring back the joy of testing in PHP.',
-    feature_image:
-      'https://storage.ghost.io/c/43/cb/43cb054d-e069-4e35-94fc-3ca586640327/content/images/size/w1200/2024/08/PestPHP-Banner.png',
+    feature_image: '/images/tags/pestphp.jpg',
   },
   ai: {
     name: 'AI',
