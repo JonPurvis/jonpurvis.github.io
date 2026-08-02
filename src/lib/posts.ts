@@ -56,6 +56,7 @@ export function primaryTag(tags: string[]): string | undefined {
     'ai',
     'speaking',
     'music',
+    'days-out',
     'development',
     'general',
   ];

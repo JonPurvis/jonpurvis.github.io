@@ -26,6 +26,13 @@ export const TAGS: Record<string, TagMeta> = {
     feature_image:
       'https://images.unsplash.com/photo-1548426589-b5560481a46e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fHJvY2slMjBtdXNpY3xlbnwwfHx8fDE2OTMxOTA5NDF8MA&ixlib=rb-4.0.3&q=80&w=2000',
   },
+  'days-out': {
+    name: 'Days Out',
+    description:
+      "Days out, attractions, and trips that aren't conferences or gigs — places worth writing about.",
+    feature_image:
+      'https://images.unsplash.com/photo-1695793582692-ec6077a3fb05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=2000',
+  },
   pestphp: {
     name: 'PestPHP',
     description:

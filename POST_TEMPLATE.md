@@ -5,7 +5,7 @@ date: 2026-07-26T12:00:00.000Z
 # updated: 2026-07-26T12:00:00.000Z
 tags:
   - development
-  # development | general | conferences | elephpants | packages | pestphp | saloonphp | ai | speaking | music
+  # development | general | conferences | elephpants | packages | pestphp | saloonphp | ai | speaking | music | days-out
 feature_image: >-
   https://images.unsplash.com/photo-...?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2000
 # Or a local image: /images/posts/post-slug/header.jpg
@@ -19,6 +19,8 @@ excerpt: >-
 # draft: true
 # photo_album: album-slug
 ---
+
+<!-- Never use the — character (em dash). Prefer commas, colons, or a normal hyphen (-). -->
 
 Write your post here.
 

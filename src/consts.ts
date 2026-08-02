@@ -75,6 +75,7 @@ export const TAG_LABELS: Record<string, string> = {
   ai: 'AI',
   speaking: 'Speaking',
   music: 'Music',
+  'days-out': 'Days Out',
   general: 'General',
 };
 
