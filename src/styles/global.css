@@ -575,7 +575,9 @@ body.search-open {
 }
 
 .hl-card .hl-card-image {
+  display: block;
   margin-bottom: 1.15rem;
+  text-decoration: none;
 }
 
 .hl-card .card-tag {
@@ -584,6 +586,17 @@ body.search-open {
 
 .hl-card .hl-card-title {
   margin: 0 0 0.9rem;
+}
+
+.hl-card .hl-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hl-card .hl-card-excerpt-link,
+.hl-card .hl-card-meta-link {
+  color: inherit;
+  text-decoration: none;
 }
 
 .hl-card .card-excerpt {
@@ -620,7 +633,8 @@ body.search-open {
   padding-bottom: 0;
 }
 
-.hl-card:hover .hl-card-title {
+.hl-card:hover .hl-card-title,
+.hl-card:hover .hl-card-title a {
   color: var(--text-hover);
 }
 
@@ -1112,6 +1126,80 @@ body.search-open {
   margin: 0 0 1.15rem;
 }
 
+.now-page ul li + li {
+  margin-top: 1rem;
+}
+
+/* Uses: section labels left, items right (desktop) */
+.uses-page > h2 {
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: normal;
+  text-transform: none;
+  line-height: var(--lh-snug);
+}
+
+.uses-page > h3 {
+  margin-top: 1.75rem;
+}
+
+.uses-page > h2 + h3 {
+  margin-top: 0;
+}
+
+/* Extra space above the first section (Hardware) */
+.uses-page > h2:first-of-type,
+.uses-page > h2:first-of-type + h3 {
+  margin-top: 2.75rem;
+}
+
+/* Divider + spacing before each section after the first.
+   Same margin/padding on label + first product so they stay aligned. */
+.uses-page > h2 ~ h2,
+.uses-page > h2 ~ h2 + h3 {
+  margin-top: 2.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .uses-page {
+    --uses-col-gap: 2rem;
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    column-gap: var(--uses-col-gap);
+    align-items: start;
+  }
+
+  .uses-page > * {
+    grid-column: 2;
+  }
+
+  /* Intro content before the first section heading spans full width */
+  .uses-page > :not(h2):not(h2 ~ *) {
+    grid-column: 1 / -1;
+  }
+
+  .uses-page > h2 {
+    grid-column: 1;
+    margin-bottom: 0;
+    align-self: start;
+  }
+
+  .uses-page > h3 {
+    line-height: var(--lh-snug);
+  }
+
+  /* Extend the label’s top border across the column gap so it reads as one line */
+  .uses-page > h2 ~ h2 {
+    margin-right: calc(-1 * var(--uses-col-gap));
+    padding-right: var(--uses-col-gap);
+  }
+}
+
 .post-body img {
   border-radius: var(--radius);
   margin: 1.5rem auto;
@@ -1227,7 +1315,25 @@ body.search-open {
   border-top: 1px solid var(--border);
 }
 
-.post-tags a {
+.post-tags--header {
+  margin: 0 0 0.85rem;
+  padding-top: 0;
+  border-top: none;
+  justify-content: center;
+}
+
+.post-tags--card {
+  margin: 0 0 0.9rem;
+  padding-top: 0;
+  border-top: none;
+}
+
+.hl-card.is-featured .post-tags--card {
+  margin-bottom: 1.05rem;
+}
+
+.post-tags a,
+.post-tags span {
   font-size: var(--fs-xs);
   text-decoration: none;
   border: 1px solid var(--border);
@@ -1239,6 +1345,14 @@ body.search-open {
 .post-tags a:hover {
   border-color: var(--border);
   color: var(--text-hover);
+}
+
+.related-posts {
+  padding-top: 0.5rem;
+}
+
+.related-posts .section-title {
+  margin-bottom: 1.25rem;
 }
 
 /* Pages / archive */
@@ -1338,6 +1452,108 @@ body.search-open {
   gap: 1.75rem;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   padding-bottom: 3rem;
+}
+
+/* Projects */
+.project-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.5rem 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.project-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.project-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  background: var(--project-icon-bg, var(--bg-soft));
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.project-name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+  min-width: 0;
+}
+
+.post-body h2.project-name {
+  margin: 0;
+  font-size: var(--fs-xl);
+}
+
+.project-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-name a:hover {
+  color: var(--text-hover);
+}
+
+.project-summary {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
+.post-body p.project-summary {
+  margin: 0;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.5rem;
+}
+
+.project-downloads {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.project-meta-sep {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  user-select: none;
+}
+
+.project-url {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.project-url:hover {
+  color: var(--text-hover);
 }
 
 /* Bookmark cards */

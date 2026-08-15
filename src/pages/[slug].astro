@@ -3,13 +3,18 @@ import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TwitterEmbeds from '../components/TwitterEmbeds.astro';
+import PackagistDownloads from '../components/PackagistDownloads.astro';
+import PostTags from '../components/PostTags.astro';
+import PostGrid from '../components/PostGrid.astro';
+import HomeSidebar from '../components/HomeSidebar.astro';
 import { SITE_TITLE, SITE_URL, SITE_LOGO, TAG_LABELS, SOCIAL_LINKS, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../consts';
 import {
   formatDate,
   readingTime,
   tagLabel,
-  primaryTag,
   excerptFrom,
+  relatedPosts,
+  sortPosts,
 } from '../lib/posts';
 
 export async function getStaticPaths() {
@@ -39,7 +44,6 @@ const entry = (kind === 'post' ? post : page)!;
 const { Content } = await render(entry);
 
 const isPost = kind === 'post' && post;
-const tag = isPost ? primaryTag(post.data.tags) : undefined;
 const description = isPost
   ? excerptFrom(post, 220)
   : (page?.data.excerpt ?? `${page?.data.title} — ${SITE_TITLE}`);
@@ -52,6 +56,8 @@ const featureImage = isPost ? post.data.feature_image : undefined;
 const featureImageUrl = absoluteUrl(featureImage);
 const tagLabels = isPost ? post.data.tags.map((t) => TAG_LABELS[t] ?? tagLabel(t)) : [];
 const pageUrl = `${SITE_URL}/${entry.data.slug}/`;
+const allPosts = isPost ? sortPosts(await getCollection('blog')) : [];
+const related = isPost ? relatedPosts(post, allPosts) : [];
 
 const jsonLd = isPost
   ? {
@@ -112,17 +118,13 @@ const jsonLd = isPost
     isPost ? (
       <header class="post-header">
         <div class="content-width">
-          {tag && (
-            <a class="post-tag" href={`/tag/${tag}/`}>
-              {tagLabel(tag)}
-            </a>
-          )}
+          <PostTags tags={post.data.tags} variant="header" />
           <h1 class="post-title" data-pagefind-meta="title">{post.data.title}</h1>
           <div class="post-meta">
             <time datetime={post.data.date.toISOString()}>
               {formatDate(post.data.date)}
             </time>
-            <span> — {minutes} min read</span>
+            <span> - {minutes} min read</span>
           </div>
         </div>
       </header>
@@ -135,7 +137,14 @@ const jsonLd = isPost
     )
   }
 
-  <article class="post-body content-width">
+  <article
+    class:list={[
+      'post-body',
+      'content-width',
+      !isPost && page?.data.slug === 'now' && 'now-page',
+      !isPost && page?.data.slug === 'uses' && 'uses-page',
+    ]}
+  >
     {
       isPost && post.data.photo_album && (
         <a class="callout photo-album-cta" href={`/${post.data.slug}/photos/`}>
@@ -145,16 +154,26 @@ const jsonLd = isPost
       )
     }
     <Content />
-    {
-      isPost && post.data.tags.length > 0 && (
-        <div class="post-tags">
-          {post.data.tags.map((t) => (
-            <a href={`/tag/${t}/`}>{TAG_LABELS[t] ?? t}</a>
-          ))}
-        </div>
-      )
-    }
+    {isPost && <PostTags tags={post.data.tags} variant="footer" />}
   </article>
   </div>
+
+  {
+    isPost && related.length > 0 && (
+      <section class="latest-section related-posts">
+        <div class="inner">
+          <h2 class="section-title">Related posts</h2>
+          <div class="latest-layout">
+            <div class="latest-main">
+              <PostGrid posts={related} />
+            </div>
+            <HomeSidebar />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {!isPost && page?.data.slug === 'about' && <PackagistDownloads />}
   <TwitterEmbeds />
 </BaseLayout>

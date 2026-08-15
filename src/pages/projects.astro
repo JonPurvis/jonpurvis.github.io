@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectList from '../components/ProjectList.astro';
+import PackagistDownloads from '../components/PackagistDownloads.astro';
+
+const title = 'Projects';
+const description =
+  "These are things I've built and maintain: open-source packages, tools, and other projects. Most start the same way: I hit a real-world problem, build a solution, and open it up for others to use.";
+---
+
+<BaseLayout title={title} description={description} canonical="/projects/">
+  <div data-pagefind-body data-pagefind-meta="type:page">
+    <header class="page-header page-header-tight">
+      <div class="content-width">
+        <h1 data-pagefind-meta="title">{title}</h1>
+      </div>
+    </header>
+    <article class="post-body content-width">
+      <p>
+        These are things I’ve built and maintain: open-source packages, tools, and other projects.
+        Most start the same way: I hit a real-world problem, build a solution, and open it up for
+        others to use.
+      </p>
+      <ProjectList />
+    </article>
+  </div>
+  <PackagistDownloads />
+</BaseLayout>

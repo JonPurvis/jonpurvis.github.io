@@ -5,6 +5,7 @@ date: 2025-11-02T13:46:00.000Z
 updated: 2026-06-14T15:31:30.000Z
 tags:
   - general
+  - development
 feature_image: >-
   https://images.unsplash.com/photo-1541367777708-7905fe3296c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGFydCUyMGNhbnZhc3xlbnwwfHx8fDE3ODE0NTEwODd8MA&ixlib=rb-4.1.0&q=80&w=2000
 feature_image_credit:

@@ -5,6 +5,7 @@ date: 2026-01-04T17:44:00.000Z
 updated: 2026-04-11T16:45:30.000Z
 tags:
   - development
+  - packages
 feature_image: >-
   https://images.unsplash.com/photo-1586256053828-a36b572ab01d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGJyZWFkYm9hcmR8ZW58MHx8fHwxNzc1OTI1OTE3fDA&ixlib=rb-4.1.0&q=80&w=2000
 feature_image_credit:

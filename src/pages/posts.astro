@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostGrid from '../components/PostGrid.astro';
+import HomeSidebar from '../components/HomeSidebar.astro';
+import { POSTS_PER_PAGE, SITE_TITLE } from '../consts';
+import { sortPosts } from '../lib/posts';
+
+const allPosts = sortPosts(await getCollection('blog'));
+---
+
+<BaseLayout
+  title="All Posts"
+  description={`All posts - ${SITE_TITLE}`}
+  canonical="/posts/"
+>
+  <section class="latest-section archive-section">
+    <div class="inner">
+      <h1 class="section-title">All Posts</h1>
+      <div class="latest-layout">
+        <div class="latest-main">
+          <PostGrid posts={allPosts} infinite initialCount={POSTS_PER_PAGE} eagerCount={3} />
+        </div>
+        <HomeSidebar eager />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

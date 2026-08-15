@@ -1,0 +1,132 @@
+---
+/** Client-side Packagist download totals (About sum + per-package cards). */
+---
+
+<script is:inline>
+  (() => {
+    const EXTRA_PACKAGES = ['pestphp/pest-plugin-profanity'];
+    const STORAGE_KEY = 'packagist-downloads-total';
+    const PACKAGE_STORAGE_KEY = 'packagist-downloads-by-package';
+    const REFRESH_MS = 60 * 60 * 1000;
+
+    const formatCount = (n) => n.toLocaleString('en-GB');
+
+    const setTotal = (total) => {
+      document.querySelectorAll('[data-packagist-downloads]').forEach((el) => {
+        el.textContent = formatCount(total);
+      });
+      try {
+        localStorage.setItem(STORAGE_KEY, String(total));
+      } catch {
+        // Ignore quota / private mode errors.
+      }
+    };
+
+    const sortProjectsByDownloads = (counts) => {
+      document.querySelectorAll('.project-list').forEach((list) => {
+        const items = [...list.querySelectorAll(':scope > .project-item')];
+        items.sort((a, b) => {
+          const aName = a
+            .querySelector('[data-packagist-package]')
+            ?.getAttribute('data-packagist-package');
+          const bName = b
+            .querySelector('[data-packagist-package]')
+            ?.getAttribute('data-packagist-package');
+          const aCount = aName && Number.isFinite(counts[aName]) ? counts[aName] : -1;
+          const bCount = bName && Number.isFinite(counts[bName]) ? counts[bName] : -1;
+          return bCount - aCount;
+        });
+        items.forEach((item) => list.appendChild(item));
+      });
+    };
+
+    const setPackageCounts = (counts) => {
+      document.querySelectorAll('[data-packagist-package]').forEach((el) => {
+        const name = el.getAttribute('data-packagist-package');
+        const total = name ? counts[name] : undefined;
+        if (!Number.isFinite(total) || total <= 0) return;
+        const countEl = el.querySelector('[data-packagist-package-count]');
+        if (countEl) countEl.textContent = formatCount(total);
+        el.hidden = false;
+        const sep = el.nextElementSibling;
+        if (sep?.classList?.contains('project-meta-sep')) sep.hidden = false;
+      });
+      sortProjectsByDownloads(counts);
+      try {
+        localStorage.setItem(PACKAGE_STORAGE_KEY, JSON.stringify(counts));
+      } catch {
+        // Ignore.
+      }
+    };
+
+    const restoreCached = () => {
+      try {
+        const cached = Number(localStorage.getItem(STORAGE_KEY));
+        if (Number.isFinite(cached) && cached > 0) setTotal(cached);
+      } catch {
+        // Ignore.
+      }
+      try {
+        const raw = localStorage.getItem(PACKAGE_STORAGE_KEY);
+        if (raw) {
+          const counts = JSON.parse(raw);
+          if (counts && typeof counts === 'object') setPackageCounts(counts);
+        }
+      } catch {
+        // Ignore.
+      }
+    };
+
+    const fetchPackageTotal = async (name) => {
+      const res = await fetch(`https://packagist.org/packages/${name}.json`);
+      if (!res.ok) throw new Error(`Packagist ${name}: ${res.status}`);
+      const data = await res.json();
+      return data?.package?.downloads?.total ?? 0;
+    };
+
+    const packageNamesOnPage = () =>
+      [...document.querySelectorAll('[data-packagist-package]')]
+        .map((el) => el.getAttribute('data-packagist-package'))
+        .filter(Boolean);
+
+    const refresh = async () => {
+      try {
+        const listRes = await fetch(
+          'https://packagist.org/packages/list.json?vendor=jonpurvis',
+        );
+        if (!listRes.ok) throw new Error(`Packagist list: ${listRes.status}`);
+        const listData = await listRes.json();
+        const names = [
+          ...new Set([
+            ...(listData.packageNames || []),
+            ...EXTRA_PACKAGES,
+            ...packageNamesOnPage(),
+          ]),
+        ];
+        const totals = await Promise.all(names.map(fetchPackageTotal));
+        const counts = Object.fromEntries(names.map((name, i) => [name, totals[i]]));
+        const sum = totals.reduce((a, b) => a + b, 0);
+        if (sum > 0) setTotal(sum);
+        setPackageCounts(counts);
+      } catch {
+        // Keep cached or ellipsis fallback in the markup.
+      }
+    };
+
+    const schedule = () => {
+      restoreCached();
+      refresh();
+      window.setInterval(refresh, REFRESH_MS);
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', schedule);
+    } else {
+      schedule();
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') refresh();
+    });
+  })();
+</script>

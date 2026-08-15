@@ -5,6 +5,7 @@ date: 2025-12-07T23:49:00.000Z
 updated: 2026-04-12T22:51:37.000Z
 tags:
   - development
+  - saloonphp
 feature_image: >-
   https://images.unsplash.com/photo-1514933651103-005eec06c04b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDMwfHxzYWxvb258ZW58MHx8fHwxNzc2MDM0MTM5fDA&ixlib=rb-4.1.0&q=80&w=2000
 feature_image_credit:

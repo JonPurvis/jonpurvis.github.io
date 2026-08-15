@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import SiteImage from './SiteImage.astro';
+import PostTags from './PostTags.astro';
 import { formatDate, tagLabel, primaryTag, excerptFrom } from '../lib/posts';
 
 interface Props {
@@ -27,42 +28,85 @@ const href = `/${post.data.slug}/`;
 const excerptLen = size === 'featured' ? 112 : 65;
 const imageWidth = size === 'featured' ? 1200 : 800;
 const imageHeight = size === 'featured' ? 800 : 450;
+const showAllTags = size === 'featured' && showTag;
 ---
 
-<a class:list={['hl-card', `is-${size}`]} href={href}>
-  {
-    showImage && post.data.feature_image && (
-      <div class="hl-card-image">
-        <SiteImage
-          src={post.data.feature_image}
-          alt=""
-          width={imageWidth}
-          height={imageHeight}
-          loading={eager ? 'eager' : 'lazy'}
-          sizes={
-            size === 'featured'
-              ? '(min-width: 768px) 50vw, 100vw'
-              : '(min-width: 768px) 25vw, 100vw'
-          }
-          widths={size === 'featured' ? [600, 900, 1200] : [400, 600, 800]}
-        />
+{
+  size === 'featured' ? (
+    <article class:list={['hl-card', `is-${size}`]}>
+      {
+        showImage && post.data.feature_image && (
+          <a class="hl-card-image" href={href}>
+            <SiteImage
+              src={post.data.feature_image}
+              alt=""
+              width={imageWidth}
+              height={imageHeight}
+              loading={eager ? 'eager' : 'lazy'}
+              sizes="(min-width: 768px) 50vw, 100vw"
+              widths={[600, 900, 1200]}
+            />
+          </a>
+        )
+      }
+      <div class="hl-card-body">
+        {showAllTags && <PostTags tags={post.data.tags} variant="card" linked={true} />}
+        <h3 class="hl-card-title">
+          <a href={href}>{post.data.title}</a>
+        </h3>
+        {
+          showExcerpt && (
+            <p class="card-excerpt">
+              <a class="hl-card-excerpt-link" href={href}>
+                {excerptFrom(post, excerptLen)}
+              </a>
+            </p>
+          )
+        }
+        {
+          showDate && (
+            <div class="card-meta">
+              <a class="hl-card-meta-link" href={href}>
+                <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+              </a>
+            </div>
+          )
+        }
       </div>
-    )
-  }
-  <div class="hl-card-body">
-    {showTag && tag && <div class="card-tag">{tagLabel(tag)}</div>}
-    <h3 class="hl-card-title">{post.data.title}</h3>
-    {
-      showExcerpt && (
-        <p class="card-excerpt">{excerptFrom(post, excerptLen)}</p>
-      )
-    }
-    {
-      showDate && (
-        <div class="card-meta">
-          <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-        </div>
-      )
-    }
-  </div>
-</a>
+    </article>
+  ) : (
+    <a class:list={['hl-card', `is-${size}`]} href={href}>
+      {
+        showImage && post.data.feature_image && (
+          <div class="hl-card-image">
+            <SiteImage
+              src={post.data.feature_image}
+              alt=""
+              width={imageWidth}
+              height={imageHeight}
+              loading={eager ? 'eager' : 'lazy'}
+              sizes="(min-width: 768px) 25vw, 100vw"
+              widths={[400, 600, 800]}
+            />
+          </div>
+        )
+      }
+      <div class="hl-card-body">
+        {showTag && tag && <div class="card-tag">{tagLabel(tag)}</div>}
+        <h3 class="hl-card-title">{post.data.title}</h3>
+        {
+          showExcerpt && (
+            <p class="card-excerpt">{excerptFrom(post, excerptLen)}</p>
+          )
+        }
+        {
+          showDate && (
+            <div class="card-meta">
+              <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+            </div>
+          )
+        }
+      </div>
+    </a>
+  )
+}

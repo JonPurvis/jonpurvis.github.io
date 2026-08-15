@@ -1,0 +1,59 @@
+---
+import { PROJECTS } from '../data/projects';
+
+interface Props {
+  projects?: typeof PROJECTS;
+}
+
+const { projects = PROJECTS } = Astro.props;
+---
+
+<ul class="project-list">
+  {
+    projects.map((project) => (
+      <li class="project-item">
+        <div class="project-heading">
+          <span
+            class="project-icon"
+            style={`--project-icon-bg: ${project.color}`}
+            aria-hidden="true"
+          >
+            {project.emoji}
+          </span>
+          <h2 class="project-name">
+            <a href={project.href} target="_blank" rel="noopener noreferrer">
+              {project.name}
+            </a>
+          </h2>
+        </div>
+        <p class="project-summary">{project.summary}</p>
+        <div class="project-meta">
+          {
+            'packagist' in project && project.packagist && (
+              <>
+                <span
+                  class="project-downloads"
+                  data-packagist-package={project.packagist}
+                  hidden
+                >
+                  <span data-packagist-package-count>…</span> downloads
+                </span>
+                <span class="project-meta-sep" hidden aria-hidden="true">
+                  •
+                </span>
+              </>
+            )
+          }
+          <a
+            class="project-url"
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {project.url}
+          </a>
+        </div>
+      </li>
+    ))
+  }
+</ul>

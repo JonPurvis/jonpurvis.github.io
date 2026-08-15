@@ -5,6 +5,7 @@ date: 2026-06-07T20:22:00.000Z
 updated: 2026-06-13T20:22:57.000Z
 tags:
   - development
+  - ai
 feature_image: >-
   https://images.unsplash.com/photo-1548092372-0d1bd40894a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNlY3VyaXR5fGVufDB8fHx8MTc4MTM4MjEzMXww&ixlib=rb-4.1.0&q=80&w=2000
 feature_image_credit:

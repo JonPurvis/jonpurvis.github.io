@@ -16,10 +16,10 @@ Beyond my day job, I’m deeply embedded in the tech community as a developer, o
 
 ### 💻 Open Source & Community
 
-I love giving back to the ecosystem. My open-source packages have been downloaded over **15,000,000 times**, and my work has been featured multiple times on *Laravel News*.
+I love giving back to the ecosystem. My open-source packages have been downloaded <strong><span data-packagist-downloads>…</span></strong> times, and my work has been featured multiple times on *Laravel News*.
 
 *   **Contributions**: I actively contribute to major projects like PestPHP, SaloonPHP, and ElePHPant.me.
-*   **My Packages**: You can check out the tools I build and maintain over on my [Packages](/packages/) page.
+*   **My Packages**: You can check out the tools I build and maintain over on my [Projects](/projects/) page.
 *   **Events:** I’m an avid conference goer. You’ll often find me at *PHP UK*, *Laravel Live UK*, and various local meetups. If you see me, come say hey, I'd love to chat!
 
 ### 🕹️ Beyond the Screen

@@ -65,3 +65,24 @@ export function primaryTag(tags: string[]): string | undefined {
   }
   return tags[0];
 }
+
+export function relatedPosts(
+  current: CollectionEntry<'blog'>,
+  all: CollectionEntry<'blog'>[],
+) {
+  const tags = new Set(current.data.tags);
+  if (tags.size === 0) return [];
+
+  return sortPosts(all)
+    .filter((p) => p.id !== current.id && p.data.tags.some((t) => tags.has(t)))
+    .map((p) => ({
+      post: p,
+      overlap: p.data.tags.filter((t) => tags.has(t)).length,
+    }))
+    .sort((a, b) =>
+      b.overlap !== a.overlap
+        ? b.overlap - a.overlap
+        : b.post.data.date.valueOf() - a.post.data.date.valueOf(),
+    )
+    .map(({ post }) => post);
+}

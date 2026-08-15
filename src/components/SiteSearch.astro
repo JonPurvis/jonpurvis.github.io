@@ -9,8 +9,10 @@ const tags = Object.entries(TAG_LABELS).map(([slug, label]) => ({
 
 const pages = [
   { title: 'About', url: '/about/', excerpt: 'Hey, I’m Jon — PHP developer, open source, and community.' },
+  { title: 'Posts', url: '/posts/', excerpt: 'All blog posts.' },
+  { title: 'Projects', url: '/projects/', excerpt: 'Open source packages I’ve built and maintain.' },
   { title: 'Uses', url: '/uses/', excerpt: 'Hardware, software, and tools I use day to day.' },
-  { title: 'Packages', url: '/packages/', excerpt: 'Open source packages I’ve built and maintain.' },
+  { title: 'Now', url: '/now/', excerpt: 'What I’m currently doing.' },
 ];
 ---
 
@@ -254,7 +256,7 @@ const pages = [
               const type = item.meta?.type || 'post';
               if (type === 'page') return false;
               const url = item.url || '';
-              return !['/about/', '/uses/', '/packages/'].includes(url);
+              return !['/about/', '/uses/', '/packages/', '/projects/', '/posts/', '/now/', '/archive/'].includes(url);
             })
             .slice(0, 12);
         } catch (_) {

@@ -1,0 +1,25 @@
+---
+import { tagLabel } from '../lib/posts';
+
+interface Props {
+  tags: string[];
+  variant?: 'header' | 'footer' | 'card';
+  linked?: boolean;
+}
+
+const { tags, variant = 'footer', linked = true } = Astro.props;
+---
+
+{
+  tags.length > 0 && (
+    <div class:list={['post-tags', `post-tags--${variant}`]}>
+      {tags.map((t) =>
+        linked ? (
+          <a href={`/tag/${t}/`}>{tagLabel(t)}</a>
+        ) : (
+          <span>{tagLabel(t)}</span>
+        ),
+      )}
+    </div>
+  )
+}

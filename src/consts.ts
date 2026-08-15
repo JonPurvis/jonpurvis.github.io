@@ -12,9 +12,10 @@ export const OG_IMAGE_HEIGHT = 800;
 
 export const PRIMARY_NAV = [
   { label: 'About', href: '/about/' },
+  { label: 'Posts', href: '/posts/' },
+  { label: 'Projects', href: '/projects/' },
   { label: 'Uses', href: '/uses/' },
-  { label: 'Open Source', href: '/packages/' },
-  { label: 'Herd', href: 'https://elephpant.me/herd/jonpurvis_', external: true },
+  { label: 'Now', href: '/now/' },
 ] as const;
 
 export const FOOTER_TAGS = [
@@ -35,9 +36,14 @@ export const SOCIAL_LINKS = [
     href: 'https://www.linkedin.com/in/jonathanpurvisvs',
     icon: 'linkedin',
   },
+  {
+    label: 'ElePHPants',
+    href: 'https://elephpant.me/herd/jonpurvis_',
+    icon: 'elephpant',
+  },
 ] as const;
 
-export const RECOMMENDATIONS = [
+export const RESOURCES = [
   {
     title: 'The PHP Foundation',
     url: 'thephp.foundation',
@@ -54,14 +60,42 @@ export const RECOMMENDATIONS = [
     href: 'https://laraveldaily.com/',
   },
   {
-    title: 'ElePHPant.me',
-    url: 'elephpant.me',
-    href: 'https://www.elephpant.me/',
-  },
-  {
     title: 'Laracasts',
     url: 'laracasts.com',
     href: 'https://laracasts.com/',
+  },
+  {
+    title: 'PHP Architect',
+    url: 'phparch.com',
+    href: 'https://www.phparch.com/',
+  },
+] as const;
+
+export const RECOMMENDATIONS = [
+  {
+    title: 'Ash Allen Design',
+    url: 'ashallendesign.co.uk',
+    href: 'https://ashallendesign.co.uk/blog',
+  },
+  {
+    title: 'Freek Van der Herten',
+    url: 'freek.dev',
+    href: 'https://freek.dev/originals',
+  },
+  {
+    title: 'Christoph Rumpel',
+    url: 'christoph-rumpel.com',
+    href: 'https://christoph-rumpel.com/',
+  },
+  {
+    title: 'JustSteveKing',
+    url: 'juststeveking.com',
+    href: 'https://www.juststeveking.com/',
+  },
+  {
+    title: 'James Brooks',
+    url: 'james.brooks.page',
+    href: 'https://james.brooks.page/',
   },
 ] as const;
 

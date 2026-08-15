@@ -5,6 +5,8 @@ date: 2025-08-24T01:12:00.000Z
 updated: 2026-05-04T01:13:06.000Z
 tags:
   - development
+  - pestphp
+  - packages
 feature_image: >-
   https://images.unsplash.com/photo-1557159557-7a93eaadf72a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxyb2FkfGVufDB8fHx8MTc3Nzg1NzE3M3ww&ixlib=rb-4.1.0&q=80&w=2000
 feature_image_credit:

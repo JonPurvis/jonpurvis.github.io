@@ -29,7 +29,7 @@ export const TAGS: Record<string, TagMeta> = {
   'days-out': {
     name: 'Days Out',
     description:
-      "Days out, attractions, and trips that aren't conferences or gigs — places worth writing about.",
+      "Days out, attractions, and trips that aren't conferences or gigs - places worth writing about.",
     feature_image:
       'https://images.unsplash.com/photo-1695793582692-ec6077a3fb05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=2000',
   },
@@ -41,23 +41,45 @@ export const TAGS: Record<string, TagMeta> = {
   },
   ai: {
     name: 'AI',
+    description:
+      "Posts about AI tools, models, and experiments I've been trying in day-to-day development.",
     feature_image:
       'https://images.unsplash.com/photo-1674027444485-cec3da58eef4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fGFpJTIwfGVufDB8fHx8MTc3NTMzNTkwNHww&ixlib=rb-4.1.0&q=80&w=2000',
   },
   saloonphp: {
     name: 'SaloonPHP',
+    description:
+      'Posts about building, testing, and extending HTTP integrations with SaloonPHP.',
+    feature_image:
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2000',
   },
   elephpants: {
     name: 'ElePHPants',
+    description:
+      "Posts about my ElePHPant collection, trades, and additions to the herd.",
+    feature_image:
+      'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2000',
   },
   speaking: {
     name: 'Speaking',
+    description:
+      "Talks and speaking engagements I've done, plus notes from preparing and delivering them.",
+    feature_image:
+      'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2000',
   },
   conferences: {
     name: 'Conferences & Meetups',
+    description:
+      'Recaps and notes from conferences and meetups I have attended or spoken at.',
+    feature_image:
+      'https://images.unsplash.com/photo-1540575467063-178a50c2df87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2000',
   },
   packages: {
     name: 'Packages',
+    description:
+      "Posts about open-source packages I've built, released, or contributed to.",
+    feature_image:
+      'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2000',
   },
 };
 
