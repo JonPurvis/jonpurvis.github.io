@@ -1685,6 +1685,24 @@ body.search-open {
   padding-bottom: 0;
 }
 
+.photo-grid--cars {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem 1rem;
+  padding-bottom: 3rem;
+}
+
+.cars-catalog {
+  padding-top: 1.5rem;
+}
+
+.photo-grid--cars figcaption {
+  font-size: var(--fs-sm);
+  color: var(--text);
+  font-weight: 600;
+  margin-top: 0.55rem;
+  text-align: center;
+}
+
 .photo-grid figure {
   margin: 0;
 }
@@ -1831,7 +1849,8 @@ body.search-open {
 }
 
 @media (max-width: 640px) {
-  .photo-grid {
+  .photo-grid,
+  .photo-grid--cars {
     grid-template-columns: 1fr;
   }
 
@@ -1845,6 +1864,12 @@ body.search-open {
 
   .photo-lightbox-nav.is-next {
     right: 0.35rem;
+  }
+}
+
+@media (min-width: 560px) and (max-width: 899px) {
+  .photo-grid--cars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

@@ -14,6 +14,7 @@ export const PRIMARY_NAV = [
   { label: 'About', href: '/about/' },
   { label: 'Posts', href: '/posts/' },
   { label: 'Projects', href: '/projects/' },
+  { label: 'Cars', href: '/cars/' },
   { label: 'Uses', href: '/uses/' },
   { label: 'Now', href: '/now/' },
 ] as const;

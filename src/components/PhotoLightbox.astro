@@ -9,12 +9,14 @@ interface ImageItem {
 
 interface Props {
   images: ImageItem[];
+  class?: string;
 }
 
-const { images } = Astro.props;
+const { images, class: className } = Astro.props;
+const gridClass = ['photo-grid', className].filter(Boolean).join(' ');
 ---
 
-<div class="photo-grid" data-photo-lightbox>
+<div class={gridClass} data-photo-lightbox>
   {
     images.map((image, index) => (
       <figure>

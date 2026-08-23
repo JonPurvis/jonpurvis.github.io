@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoLightbox from '../components/PhotoLightbox.astro';
+import { CARS } from '../data/cars';
+
+const title = 'Cars';
+const description =
+  "I've always had an interest in cars, so every so often my friends and I attend track days to experience cars that we wouldn't usually. This page documents the ones I've driven.";
+
+const images = CARS.map((car) => ({
+  src: car.image,
+  alt: car.alt,
+  caption: car.name,
+}));
+---
+
+<BaseLayout title={title} description={description} canonical="/cars/">
+  <div data-pagefind-body data-pagefind-meta="type:page">
+    <header class="page-header page-header-tight">
+      <div class="content-width">
+        <h1 data-pagefind-meta="title">{title}</h1>
+      </div>
+    </header>
+    <div class="content-width">
+      <p>
+        I’ve always had an interest in cars, so every so often my friends and I attend track days to
+        experience cars that we wouldn’t usually! I plan to use this page to document the cars I
+        drive.
+      </p>
+    </div>
+    <div class="inner cars-catalog">
+      <PhotoLightbox images={images} class="photo-grid--cars" />
+    </div>
+  </div>
+</BaseLayout>
