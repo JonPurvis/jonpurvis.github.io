@@ -1,5 +1,15 @@
 export const PROJECTS = [
   {
+    name: 'Fuzz',
+    emoji: '👾',
+    color: '#ede9fe',
+    packagist: 'jonpurvis/fuzz',
+    summary:
+      'A PestPHP plugin for coverage-guided fuzz testing, so hostile-input tests can live alongside your normal app suite.',
+    href: 'https://github.com/JonPurvis/fuzz',
+    url: 'github.com/JonPurvis/fuzz',
+  },
+  {
     name: 'Pest Plugin Profanity',
     emoji: '🤬',
     color: '#fee2e2',
