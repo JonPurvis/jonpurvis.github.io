@@ -1126,6 +1126,25 @@ body.search-open {
   margin: 0 0 1.15rem;
 }
 
+.post-body table {
+  width: 100%;
+  margin: 0 0 1.15rem;
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+
+.post-body th,
+.post-body td {
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.post-body th {
+  font-weight: 600;
+  background: var(--bg-soft);
+}
+
 .now-page ul li + li {
   margin-top: 1rem;
 }
