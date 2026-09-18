@@ -18,7 +18,7 @@ excerpt: >-
 
 <!-- Never use the — character (em dash). Prefer commas, colons, or a normal hyphen (-). -->
 
-Just over a week ago I wrote about a photographer's WordPress site getting defaced and rebuilding it with [Statamic](https://statamic.com/) on [Laravel Cloud](https://cloud.laravel.com/). Well, it's live now, and the whole thing took a couple of hours rather than a weekend. The setup process was even smoother than I'd expected.
+Just over a week ago I wrote about a photographer's WordPress site getting defaced and rebuilding it with [Statamic](https://statamic.com/) on [Laravel Cloud](https://laravel.com/cloud). Well, it's live now, and the whole thing took a couple of hours rather than a weekend. The setup process was even smoother than I'd expected.
 
 <figure class="bookmark-card">
 <a class="bookmark-card-link" href="/goodbye-wordpress-and-digitalocean/">
@@ -34,7 +34,7 @@ Just over a week ago I wrote about a photographer's WordPress site getting defac
 </a>
 </figure>
 
-The rebuild is Statamic 6 on Laravel 13 (PHP 8.5): Antlers templates, Tailwind v4, Alpine.js, and Statamic's eloquent driver so content lives in MySQL. Server-rendered pages, no Inertia or Livewire, which suits a gallery site fine. I'd originally planned to wire up [Laravel Scout](https://laravel.com/docs/scout) for search, but Statamic's built-in local index was simpler for this site. After deploy you run `php please search:update --all`, and the app rebuilds a missing index on its own if it needs to.
+The rebuild is Statamic 6 on Laravel 13 (PHP 8.5): Antlers templates, Tailwind v4, Alpine.js, and Statamic's eloquent driver so content lives in MySQL. Server-rendered pages, no Inertia or Livewire, which suits a gallery site fine. I'd originally planned to wire up Laravel Scout for search, but Statamic's built-in local index was simpler for this site. After deploy you run `php please search:update --all`, and the app rebuilds a missing index on its own if it needs to.
 
 Laravel Cloud was the obvious host. I didn't want another box to patch, another SSH session wondering whether `apt upgrade` had broken PHP, or another WordPress install to keep on top of. Push to git, it deploys. That was basically it.
 
@@ -66,7 +66,7 @@ I ended up with a small app-level fix so CP previews use the same public Glide p
 
 Everything else was dialling in Statamic details. A couple of hours all in.
 
-The one UI thing I wanted was dark mode. There doesn't seem to be a toggle yet. [Forge](https://forge.laravel.com/) has had it for years, so I'm hoping Cloud isn't far behind.
+The one UI thing I wanted was dark mode. There doesn't seem to be a toggle yet. Forge has had it for years, so I'm hoping Cloud isn't far behind.
 
 ## Push to deploy and quality gates
 
@@ -111,7 +111,7 @@ Your total invoice depends on the plan fee and how much of the included credits 
 
 This is a photographer's portfolio, not a SaaS dashboard. Traffic is bursty at best: a few visits when someone shares a link, then silence for days.
 
-Laravel Cloud's Scale to Zero on Flex compute lets the environment sleep after a period of inactivity and wake when the next request arrives, typically in under 500ms on the newer Flex sizes. Not literally instant, but fast enough that visitors won't notice. Database clusters can sleep too when there are no active connections.
+Laravel Cloud's [Scale to Zero](https://laravel.com/blog/your-laravel-cloud-stack-now-scales-to-zero) on Flex compute lets the environment sleep after a period of inactivity and wake when the next request arrives, typically in under 500ms on the newer Flex sizes. Not literally instant, but fast enough that visitors won't notice. Database clusters can sleep too when there are no active connections.
 
 You're not paying for compute while everything is asleep. That's the appeal for a site like this. The old droplet was on 24/7 for a site that might get a handful of visits on a good week. Scale to zero flips that around: you pay when someone actually shows up, rather than keeping a server warm just in case.
 
@@ -127,4 +127,9 @@ I had an issue where the database cluster was failing to wake up, so I temporari
 
 Overall I'm really happy with how it turned out. The photographer gets a cleaner admin and a faster public site. I get git-based deploys, automated dependency PRs, and no droplet to patch. I've already got at least two other projects lined up as Cloud candidates, and I'll definitely be moving those over in the coming weeks.
 
-If you're maintaining a small Laravel or Statamic site on a legacy VPS mostly because it has always been there, especially if your traffic graph has a lot of flat lines, give [Laravel Cloud](https://cloud.laravel.com) a proper look. The Starter plan is $5 a month plus usage with $5 in monthly usage credits included, so you can stand up a real environment without committing to an always-on droplet. Push-to-deploy from GitHub, File Explorer, scale to zero, and Octane as a toggle made this migration feel almost boring in the best way. If you've been putting off moving a quiet Laravel site off a VPS, the included credits make it easy to try without much commitment.
+If you're maintaining a small Laravel or Statamic site on a legacy VPS mostly because it has always been there, especially if your traffic graph has a lot of flat lines, give Laravel Cloud a proper look. The Starter plan is $5 a month plus usage with $5 in monthly usage credits included, so you can stand up a real environment without committing to an always-on droplet. Push-to-deploy from GitHub, File Explorer, scale to zero, and Octane as a toggle made this migration feel almost boring in the best way. If you've been putting off moving a quiet Laravel site off a VPS, the included credits make it easy to try without much commitment.
+
+<aside class="callout callout-info">
+<strong>Heads Up!</strong>
+<p>After <a href="https://x.com/JonPurvis_/status/2099619737248387494">the tweet</a> I made about this migration, Laravel got in touch and asked if I'd be up for writing a post on my site about it in exchange for some Cloud credits, which I accepted. Everything you read here is my own thoughts.</p>
+</aside>

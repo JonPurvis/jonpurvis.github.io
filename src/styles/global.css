@@ -1126,6 +1126,16 @@ body.search-open {
   margin: 0 0 1.15rem;
 }
 
+.post-body :is(p, li, td, blockquote) a {
+  color: var(--accent-text);
+  text-decoration-color: color-mix(in srgb, var(--accent-text) 50%, var(--accent));
+}
+
+.post-body :is(p, li, td, blockquote) a:hover {
+  color: color-mix(in srgb, var(--accent-text) 55%, var(--accent));
+  text-decoration-color: var(--accent);
+}
+
 .post-body table {
   width: 100%;
   margin: 0 0 1.15rem;
