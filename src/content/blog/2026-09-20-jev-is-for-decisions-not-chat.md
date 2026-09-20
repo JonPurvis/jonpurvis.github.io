@@ -89,7 +89,7 @@ The hard rule that fell out of the chat eval: never ask Jev how much is left. Pu
 
 If a Choice's confidence is under 0.45, the composer refuses the optimistic path. `buy_now` becomes `wait`. `keep_going` becomes `slow_down`. The raw pound facts still sit on the verdict so I can see what it was looking at.
 
-Live Pest evals sit behind `TYPESAFE_EVAL_LIVE=1`. A USB cable at £8 should come back `buy_now` or `wait` with an affordability noul above 0.55. A luxury car at £45k plus £800 a month should be `dont_buy` or `wait` with a fit noul under 0.45. Ground-truth tests assert the tool state matches the Support calculators, including the unpaid-vs-month-total trap chat fell into. The old Laravel AI tools are still on disk. Nothing live calls Ollama any more.
+Live Pest evals sit behind `TYPESAFE_EVAL_LIVE=1`. A USB cable at £8 should come back `buy_now` or `wait` with an affordability noul above 0.55. A luxury car at £45k plus £800 a month should be `dont_buy` or `wait` with a fit noul under 0.45. Ground-truth tests assert the tool state matches the Support calculators, including the unpaid-vs-month-total trap chat fell into.
 
 ## What I actually use it for
 
