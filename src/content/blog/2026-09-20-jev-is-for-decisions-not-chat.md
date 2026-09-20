@@ -93,7 +93,7 @@ Live Pest evals sit behind `TYPESAFE_EVAL_LIVE=1`. A USB cable at £8 should com
 
 ## What I actually use it for
 
-**Should I buy this?** Item, one-off, optional monthly. A cheap essential mid-cycle (that USB cable) is a high affordability noul and `buy_now`. A big discretionary buy when cash is tight is a timing noul that says wait, even if savings could cover it. Raiding a savings goal for a gadget is where `harms_savings_goals` is the useful number, not a chatty pep talk.
+**Should I buy this?** Item, one-off, optional monthly. A cheap essential mid-cycle (that USB cable) is a high affordability noul and `buy_now`. A big discretionary buy when cash is tight is a timing noul that says wait, even if savings could cover it. Raiding a savings goal for a gadget is where `harms_savings_goals` is the useful number, not a chatbot talking you round.
 
 **Am I on track this pay cycle?** No purchase, just burn vs remaining cash after unpaid bills. Takeaways stacking up mid-cycle should flip to `slow_down` or `pause_discretionary` before payday. The value is a typed verdict with a confidence I can threshold, not a paragraph of advice. The app still owns the policy.
 

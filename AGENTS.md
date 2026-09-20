@@ -1,3 +1,7 @@
+## Voice
+
+British English only. No American spellings or idioms in posts, pages, or UI copy. Prefer summarise, favourite, colour, maths, whilst. Do not write pep talk, gotten, gonna, reach out, or similar US phrasing.
+
 ## Development
 
 When starting the dev server, use background mode:

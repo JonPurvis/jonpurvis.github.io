@@ -21,6 +21,7 @@ excerpt: >-
 ---
 
 <!-- Never use the — character (em dash). Prefer commas, colons, or a normal hyphen (-). -->
+<!-- British English only. No American spellings or idioms (pep talk, gotten, summarize, favorite, color, reach out). -->
 
 Write your post here.
 

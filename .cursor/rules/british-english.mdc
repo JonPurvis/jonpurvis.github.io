@@ -1,0 +1,27 @@
+---
+description: British English only. No American spellings, idioms, or phrasing in site copy.
+alwaysApply: true
+---
+
+# British English
+
+Jon is English. All user-facing copy (posts, pages, excerpts, UI) is British English, not American.
+
+- Spellings: colour, favourite, summarise, behaviour, travelling, modelling, analogue, licence (noun), practise (verb).
+- Words: maths not math; holiday not vacation; mobile not cell phone; rubbish not trash; notes not bill (for money, say pound notes if needed).
+- Idioms: British. Do not write pep talk, gotten, gonna, buddy, folks, reach out, double down, circle back, or similar US workplace/blog filler.
+- Prefer talking you round, a load of waffle, quite, rather, whilst (Jon uses whilst) over American cheerleading.
+
+If a US product name or quote requires American spelling, leave that string intact. Everything around it stays British.
+
+```markdown
+<!-- BAD -->
+not a chatty pep talk
+favorite, summarize, color
+I reached out and double downed
+
+<!-- GOOD -->
+not a chatbot talking you round
+favourite, summarise, colour
+I got in touch
+```
