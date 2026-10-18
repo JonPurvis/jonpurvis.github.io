@@ -31,10 +31,11 @@ Then I heard about [Lerd](https://lerd.sh/).
 <div class="bookmark-card-title">Lerd</div>
 <div class="bookmark-card-description">Open-source, Herd-like local PHP development for Linux and macOS. Podman-native, rootless, automatic .test domains, per-project PHP and Node, one-command TLS, and a proper dashboard.</div>
 <div class="bookmark-card-meta">
-<img class="bookmark-card-icon" src="https://lerd.sh/favicon.ico" alt="" width="18" height="18" loading="lazy" decoding="async" />
+<img class="bookmark-card-icon" src="https://lerd.sh/assets/logo.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
 <span class="bookmark-card-publisher">lerd.sh</span>
 </div>
 </div>
+<div class="bookmark-card-thumbnail"><img src="https://lerd.sh/assets/social-preview.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
 </a>
 </figure>
 
