@@ -1,0 +1,33 @@
+name: Update ElePHPant herd count
+
+on:
+  schedule:
+    - cron: '15 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Refresh herd count JSON
+        env:
+          ELEPHPANT_API_TOKEN: ${{ secrets.ELEPHPANT_API_TOKEN }}
+        run: node scripts/update-elephpant-herd-count.mjs
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet public/elephpant-herd-unique.json; then
+            echo "No change to herd count."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/elephpant-herd-unique.json
+          git commit -m "Update ElePHPant herd unique count."
+          git push

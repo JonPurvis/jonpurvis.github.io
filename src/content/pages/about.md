@@ -33,5 +33,8 @@ I'll try almost any gaming genre, except sports games, where I've officially acc
 When it's time to completely unplug, I have a few favourite ways to spend my time:
 
 *   **Food:** I love scouting out new local eateries. Indian, Italian, and Chinese are my go-tos (honourable mention to pretty much anything involving chicken).
+*   **ElePHPants:** I collect PHP conference plush mascots and keep track of my herd on [ElePHPant.me](https://www.elephpant.me/). Right now that is <strong><span data-elephpant-herd-unique>…</span> unique species</strong> ([see my full herd](https://www.elephpant.me/herd/jonpurvis_)).
+*   **Rum:** I collect Kraken rum, especially their limited-edition bottles.
+*   **Pop figures:** Mostly *The Lord of the Rings* and Iron Maiden.
 *   **Geocaching:** I get out at least once a week to hunt for caches, starting close to home and gradually working my way further afield.
 *   **Sydney:** Last but definitely not least, I love taking my Dachshund, Sydney, out for walks.

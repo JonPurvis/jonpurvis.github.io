@@ -1,0 +1,75 @@
+---
+/** Client-side herd count from /elephpant-herd-unique.json (24h cache). */
+---
+
+<script is:inline>
+  (() => {
+    const ENDPOINT = '/elephpant-herd-unique.json';
+    const STORAGE_KEY = 'elephpant-herd-unique-v1';
+    const CACHE_MS = 24 * 60 * 60 * 1000;
+
+    const formatCount = (n) => n.toLocaleString('en-GB');
+
+    const setUnique = (unique) => {
+      if (!Number.isFinite(unique) || unique < 0) return;
+      document.querySelectorAll('[data-elephpant-herd-unique]').forEach((el) => {
+        el.textContent = formatCount(unique);
+      });
+    };
+
+    const readCache = () => {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        const unique = parsed?.unique;
+        const at = parsed?.at;
+        if (!Number.isFinite(unique) || unique < 0 || !Number.isFinite(at)) return null;
+        return { unique, at };
+      } catch {
+        return null;
+      }
+    };
+
+    const writeCache = (unique) => {
+      setUnique(unique);
+      try {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({ unique, at: Date.now() }),
+        );
+      } catch {
+        // Ignore quota / private mode errors.
+      }
+    };
+
+    const refresh = async () => {
+      const cached = readCache();
+      if (cached && Date.now() - cached.at < CACHE_MS) {
+        setUnique(cached.unique);
+        return;
+      }
+
+      try {
+        const res = await fetch(ENDPOINT, { headers: { Accept: 'application/json' } });
+        if (res.status !== 200) throw new Error(`Herd count: ${res.status}`);
+        const data = await res.json();
+        const unique = data?.unique;
+        if (!Number.isFinite(unique) || unique < 0) throw new Error('Invalid herd count');
+        writeCache(unique);
+      } catch {
+        if (cached) setUnique(cached.unique);
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', refresh);
+    } else {
+      refresh();
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') refresh();
+    });
+  })();
+</script>
