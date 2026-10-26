@@ -10,6 +10,11 @@ export const CARS = [
     alt: 'BMW M340i Police Interceptor',
   },
   {
+    name: 'Ferrari 488',
+    image: '/images/cars/ferrari-488-pista.jpg',
+    alt: 'Ferrari 488 on a wet track at a track day',
+  },
+  {
     name: 'Nissan GT-R',
     image: '/images/cars/nissan-gt-r.jpg',
     alt: 'Nissan GT-R',
