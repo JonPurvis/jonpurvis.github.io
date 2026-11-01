@@ -64,7 +64,7 @@ Dependabot bumped a couple of GitHub Actions versions, and the same skeleton ref
 <span class="bookmark-card-publisher">GitHub</span>
 </div>
 </div>
-<div class="bookmark-card-thumbnail"><img src="https://opengraph.githubassets.com/1/JonPurvis/squeaky/releases/tag/v3.1.0" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
+<div class="bookmark-card-thumbnail"><img src="/images/bookmarks/squeaky-github.png" alt="" width="480" height="280" loading="lazy" decoding="async" /></div>
 </a>
 </figure>
 
