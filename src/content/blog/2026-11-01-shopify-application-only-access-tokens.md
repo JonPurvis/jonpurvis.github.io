@@ -1,5 +1,5 @@
 ---
-title: And the shops we could not get back
+title: Shopify application only tokens
 slug: shopify-application-only-access-tokens
 date: 2026-11-01T18:00:00.000Z
 tags:
