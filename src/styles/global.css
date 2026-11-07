@@ -172,11 +172,44 @@ h4 {
   justify-content: center;
 }
 
-.theme-toggle {
+.nav-tools {
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  z-index: 2;
+}
+
+.rss-link {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #15171a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .rss-link {
+  background: #ffffff;
+  color: #15171a;
+}
+
+.rss-link:hover {
+  opacity: 0.9;
+}
+
+.rss-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.theme-toggle {
   width: 34px;
   height: 34px;
   border: none;

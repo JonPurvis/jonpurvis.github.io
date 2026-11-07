@@ -118,7 +118,7 @@ const year = new Date().getFullYear();
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="256x256" />
     <link rel="apple-touch-icon" href="/favicon.png" />
-    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss/" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
     {
       jsonLd && (
         <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -139,21 +139,35 @@ const year = new Date().getFullYear();
       <header class="site-header">
         <div class="inner nav-top">
           <SiteSearch />
-          <button
-            type="button"
-            class="theme-toggle"
-            id="theme-toggle"
-            aria-label="Toggle dark mode"
-            title="Toggle dark mode"
-          >
-            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <path d="M21 14.3A8.5 8.5 0 0 1 9.7 3 7 7 0 1 0 21 14.3z"></path>
-            </svg>
-            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <circle cx="12" cy="12" r="4"></circle>
-              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
-            </svg>
-          </button>
+          <div class="nav-tools">
+            <a
+              class="rss-link"
+              href="/rss.xml"
+              aria-label="Subscribe via RSS"
+              title="Subscribe via RSS"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <circle cx="6.18" cy="17.82" r="2.18"></circle>
+                <path d="M4 4.44v2.83c6.9 0 12.73 5.83 12.73 12.73h2.83A15.56 15.56 0 0 0 4 4.44z"></path>
+                <path d="M4 10.1v2.83a7.07 7.07 0 0 1 7.07 7.07h2.83A9.9 9.9 0 0 0 4 10.1z"></path>
+              </svg>
+            </a>
+            <button
+              type="button"
+              class="theme-toggle"
+              id="theme-toggle"
+              aria-label="Toggle dark mode"
+              title="Toggle dark mode"
+            >
+              <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M21 14.3A8.5 8.5 0 0 1 9.7 3 7 7 0 1 0 21 14.3z"></path>
+              </svg>
+              <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+              </svg>
+            </button>
+          </div>
           <a class="nav-brand" href="/" aria-label={SITE_TITLE}>
             <SiteImage
               src={SITE_LOGO}
@@ -204,9 +218,9 @@ const year = new Date().getFullYear();
               SOCIAL_LINKS.map((social) => (
                 <a
                   href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  aria-label={social.icon === 'rss' ? 'Subscribe via RSS' : social.label}
                   class="footer-social-link"
                 >
                   {social.icon === 'x' ? (
@@ -216,6 +230,12 @@ const year = new Date().getFullYear();
                   ) : social.icon === 'linkedin' ? (
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                       <path d="M22.2 0H1.8C.8 0 0 .8 0 1.8v20.4C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.8C24 .8 23.2 0 22.2 0zM7.2 20.4H3.6V9.6h3.6v10.8zM5.4 7.9c-1.2 0-2.1-.9-2.1-2.1S4.2 3.7 5.4 3.7s2.1.9 2.1 2.1-.9 2.1-2.1 2.1zm15 12.5h-3.6v-5.4c0-1.4-.5-2.3-1.8-2.3-1 0-1.5.6-1.8 1.3-.1.2-.1.5-.1.8v5.6H9.5s.05-9.1 0-10h3.6v1.4c.5-.7 1.3-1.8 3.3-1.8 2.4 0 4.2 1.6 4.2 4.9v5.5z" />
+                    </svg>
+                  ) : social.icon === 'rss' ? (
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <circle cx="6.18" cy="17.82" r="2.18" />
+                      <path d="M4 4.44v2.83c6.9 0 12.73 5.83 12.73 12.73h2.83A15.56 15.56 0 0 0 4 4.44z" />
+                      <path d="M4 10.1v2.83a7.07 7.07 0 0 1 7.07 7.07h2.83A9.9 9.9 0 0 0 4 10.1z" />
                     </svg>
                   ) : (
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

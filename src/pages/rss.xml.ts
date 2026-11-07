@@ -66,7 +66,7 @@ export const GET: APIRoute = async () => {
     </image>
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
     <ttl>60</ttl>
-    <atom:link href="${SITE_URL}/rss/" rel="self" type="application/rss+xml"/>
+    <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml"/>
     ${items}
   </channel>
 </rss>`;

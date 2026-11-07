@@ -42,6 +42,11 @@ export const SOCIAL_LINKS = [
     href: 'https://elephpant.me/herd/jonpurvis_',
     icon: 'elephpant',
   },
+  {
+    label: 'RSS',
+    href: '/rss.xml',
+    icon: 'rss',
+  },
 ] as const;
 
 export const RESOURCES = [
