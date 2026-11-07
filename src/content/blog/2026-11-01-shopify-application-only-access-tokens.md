@@ -2,6 +2,7 @@
 title: Shopify application only tokens
 slug: shopify-application-only-access-tokens
 date: 2026-11-01T18:00:00.000Z
+updated: 2026-11-07T19:47:00.000Z
 tags:
   - development
   - packages

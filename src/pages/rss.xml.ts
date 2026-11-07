@@ -23,7 +23,13 @@ function xmlEscape(value: string) {
 
 export const GET: APIRoute = async () => {
   const posts = sortPosts(await getCollection('blog'));
-  const lastBuildDate = (posts[0]?.data.updated ?? posts[0]?.data.date ?? new Date()).toUTCString();
+  const lastBuildDate = new Date(
+    posts.reduce((latest, post) => {
+      const published = post.data.date.valueOf();
+      const updated = post.data.updated?.valueOf() ?? 0;
+      return Math.max(latest, published, updated);
+    }, 0),
+  ).toUTCString();
   const favicon = `${SITE_URL}/favicon.png`;
 
   const items = posts
@@ -42,6 +48,7 @@ export const GET: APIRoute = async () => {
       <link>${link}</link>
       <guid isPermaLink="true">${link}</guid>
       <pubDate>${post.data.date.toUTCString()}</pubDate>
+      ${post.data.updated ? `<atom:updated>${post.data.updated.toISOString()}</atom:updated>` : ''}
       <dc:creator><![CDATA[${SITE_TITLE}]]></dc:creator>
       ${categories}
       <description><![CDATA[${description}]]></description>
