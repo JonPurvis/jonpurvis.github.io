@@ -19,7 +19,7 @@ excerpt: >-
 
 I've been building a PHP SDK for the [Monzo developer API](https://docs.monzo.com/) with [Saloon](https://docs.saloon.dev/) v4. I wanted something I could `composer require` into any PHP app, not a Laravel package with a service provider. Saloon is already set up for this. You make a connector, a request class for each endpoint, and resources once you've got more than a handful of methods. That's pretty much what the [building SDKs](https://docs.saloon.dev/digging-deeper/building-sdks) docs tell you to do, so I followed them.
 
-The package is [jonpurvis/monzo-php-sdk](https://github.com/JonPurvis/monzo-php-sdk). PHP 8.2, Saloon, and the pagination plugin. Monzo's API isn't huge, but bits of it behave differently enough that you can't treat every call the same.
+The package is [jonpurvis/monzo-php-sdk](https://github.com/JonPurvis/monzo-php-sdk). It needs PHP 8.2 onwards, plus Saloon and the pagination plugin. Monzo's API isn't huge, but bits of it behave differently enough that you can't treat every call the same.
 
 <figure class="bookmark-card">
 <a class="bookmark-card-link" href="https://github.com/JonPurvis/monzo-php-sdk" target="_blank" rel="noopener noreferrer">
@@ -105,4 +105,6 @@ The only webhook the docs describe is `transaction.created`. `TransactionCreated
 
 PHPStan is on max, and CI runs Rector and PHP-CS-Fixer. No Pint. This isn't a Laravel package, so I didn't want Pint in there just to format the tests.
 
-I'll write about actually using it another time.
+I've actually wanted to build this SDK for a while. I had a look around first, to see if one already existed, and the only one I found hadn't been updated for years.
+
+Whilst building it, I was surprised at how old school the Monzo developer portal looked. Compared to the rest of the Monzo platform, the API portal looks forgotten. I think it uses an old version of Bootstrap. It could definitely do with a lick of paint if you compare it with the Monzo website.
