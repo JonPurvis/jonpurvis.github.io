@@ -71,13 +71,15 @@ It also caught out something I hadn't thought about. My packages aren't Lerd sit
 
 In my last post I said I'd probably drop DBngin at some point. The runtime switch made the case for me, because nearly everything that went wrong traced back to databases living outside Lerd.
 
-So they all moved in. That was 20 sites' databases across two DBngin servers, one MySQL 8.0 and one 8.4, all going into Lerd's MySQL 8.4. The biggest was nearly 15 GB on its own. Every table was checked against its source afterwards, about 19.4 million rows in total, and they all matched. The first attempt at importing the big one ran out of memory, so the Podman VM went from 6 GB to 12 GB:
+So they all moved in. That was 20 sites' databases across two DBngin servers, one MySQL 8.0 and one 8.4, all going into Lerd's MySQL 8.4. The biggest was nearly 15 GB on its own. Every table was checked against its source afterwards, about 19.4 million rows in total, and they all matched. The first attempt at importing the big one ran out of memory. MySQL's buffer pool had been raised to 2 GB to speed the import up, and with Elasticsearch running alongside, that was more than the 6 GB Podman VM could spare, so its kernel killed MySQL partway through. Bringing the buffer pool back down to 512 MB got it in on the second go, in about 13 minutes.
+
+Once it was across, I gave the VM more room for next time, taking it from 6 GB to 12 GB:
 
 ```bash
 lerd machine memory 12
 ```
 
-I also raised MySQL's buffer pool from 128 MB to 4 GB. Lerd gives you a tuning file for exactly this, `~/.local/share/lerd/service-tuning/mysql.conf`, and it never overwrites it, so the change survives restarts and updates.
+With that headroom, I raised MySQL's buffer pool for good, from 128 MB to 4 GB. Lerd gives you a tuning file for exactly this, `~/.local/share/lerd/service-tuning/mysql.conf`, which `lerd service config mysql` opens for you, and it never overwrites it, so the change survives restarts and updates.
 
 Once everything was across, DBngin was uninstalled, along with its 4.5 GB data folder, after backing up every database as a dump first. Then I moved MySQL back to the standard port **3306** with `lerd service port mysql --reset`, which once again rewrote every site's `.env` to match. Lesson learnt the second time round.
 
